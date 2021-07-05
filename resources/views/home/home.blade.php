@@ -13,7 +13,9 @@
                             <hr>
                             <p class="section{{$section->id}}">Vous aviez +{{$section->scoreMax}} Points à gagner</p>
                             <p class="section{{$section->id}}">Le meilleur score est :{{ \App\Http\Controllers\EtudiantController::getBestScoreOfAnSection($section->id)}}</p>
-                            <p class="section{{$section->id}}">Moyenne : 329</p>
+                            <p class="section{{$section->id}}">
+                                Moyenne : {{ \App\Http\Controllers\EtudiantController::getAverageOfAnSection($section->id)}}
+                            </p>
                             <p class="section{{$section->id}}">Status :</p>
                             </div>
                             </div>

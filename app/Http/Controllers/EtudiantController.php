@@ -102,7 +102,7 @@ class EtudiantController extends Controller
         }
     }
 
-    public function getAnSection($id){
+    public function section($id){
         return view('home.sectionContent',[
             'coach_name' => $this->getCoach(session('etudiant_id')),
             'totalScore' => $this->getEtudiantTotalScore(),
@@ -141,5 +141,13 @@ class EtudiantController extends Controller
             $scoreMax = $moduleInfo->max('etudiant_score');
         }
         return $scoreMax;
+    }
+
+    public static function getAverageOfAnSection($id){
+        $moyenneInfo = DB::table('modules')->where('section',$id);
+        if($moyenneInfo){
+            return $moyenneInfo->avg('etudiant_score');
+        }
+        return 0;
     }
 }
