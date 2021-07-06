@@ -111,11 +111,17 @@ class EtudiantController extends Controller
     }
 
 
+
     /*--------------------------Treatment part----------*/
 
     public function getCoach($id){
-        $coach_id = Etudiant::where('coach_id', $id)->first()->coach_id;
-        $coach_name = Coach::where('id',$coach_id)->first()->name;
+        $coach_id = Etudiant::where('id', $id)->first()->coach_id;
+        $coach = Coach::where('id',$coach_id)->first();
+        if(empty($coach)) {
+            $coach_name = '--';
+        }else{
+            $coach_name = $coach->name;
+        }
         return $coach_name;
     }
 

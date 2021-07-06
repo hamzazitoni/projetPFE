@@ -20,8 +20,6 @@
         <link rel="stylesheet" href="{{asset('css/section1/header.css')}}">
         <!-- css of section1 -->
         <link rel="stylesheet" href="{{asset('css/section1/index.css')}}" />
-        <link rel="stylesheet" href="{{asset('css/sectionsContent/main.css')}}" />
-        <link rel="stylesheet" href="{{asset('css/sectionsContent/section_css.css')}}" />
         <title>@yield('title','Resolution de problemes')</title>
     </head>
     <body>

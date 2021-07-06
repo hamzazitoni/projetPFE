@@ -1,6 +1,39 @@
-@extends('base')
-
-@section('content')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ asset('css/sectionContent/section_css.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/sectionContent/main.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/sectionContent/sectionContentHeader.css')}}">
+    <title></title>
+</head>
+<body>
+    <div class="left-menu">
+        <div class="img-icon">
+            <img src="{{ asset('images/sectionContentHeader.jpeg')}}" alt="">
+            <p>Gestion du Temps</p>
+            <a href="">Dashboard</a>
+        </div>
+    </div>
+    <div class="main-page">
+      <header>
+        <div class="header-left-part">
+            <div class="burger">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+        </div>
+        <div class="header-middle-part">
+            <p>Auto-évaluation</p>
+        </div>
+        <div class="header-right-part"></div>
+    </div>
+    </header>
     <div class="container">
         <div class="card mb-3" style="max-width: 1000px;">
             <div class="row g-0 ">
@@ -42,7 +75,7 @@
                             @php
                             $score=10;
                             echo"Votre Score: $score";
-                            @endphp
+                        @endphp
                         </div>
                         <div class="col-md-4 offset-md-4"><img src="img/twoStars.png" alt="" srcset="" class="image_badge">
 
@@ -72,13 +105,12 @@
                             Chapitre nest pas encors Valider
                         </div>
                   </div>';
-
                 }
-
                   @endphp
                 </div>
               </div>
             </div>
           </div>
     </div>
-@endsection
+  </body>
+  </html>
