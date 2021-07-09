@@ -16,41 +16,47 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
         <script src="https://cdn.jsdelivr.net/highlight.js/9.9.0/highlight.min.js"></script>
-        <!-- <script src="script.js" defer></script> -->
-        <!--Css of header-->
-        <link rel="stylesheet" href="{{asset('css/section1/header.css')}}">
-        <!-- css of section1 -->
 
-        <!-- css of section2 -->
         @yield('style')
 
-        <title>@yield('title','Section 2')</title>
+        <title>@yield('title','Coachs')</title>
     </head>
     <body>
-        <div class="main-page">
-            <header>
-                <div class="">
-                    <div class="">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </div>
-                <div class="header-middle-part">
-                    <a href="{{ route('sections',[ 'id' => 1]) }}">
-                        <img src="{{ asset('images/section1/iconM3.svg')}}" width="40%">
-                    </a>
-                    <div class="score">
-                        score : {{ $totalScore }}
-                    </div>
-                </div>
-                <div class="header-right-part">
-                    <div class="progress" id="prog_bar">
-                        <div id="progression" class="progress-bar progress-bar-striped progress-bar-animated active" role="progressbar" style="width: 0%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </div>
-            </header>
-        </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Admin DashBoard</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('coachLogout')}}">
+                            Logout
+                        </a>
+                    </li>
+                    @if(Session::has('coach_id'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('coachLogout')}}">
+                                Logout
+                            </a>
+                        </li>
+                    @endif
+                    @if(!Session::has('coach_id'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('coachConnexion')}}">
+                                Login
+                            </a>
+                        </li>
+                    @endif
+                </ul>
+            </div>
+        </nav>
 
         @yield('content')
 
@@ -64,7 +70,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
         crossorigin="anonymous"></script>
-        <script src="{{asset('/js/section1/header.js')}}"></script>
 
         @yield('script')
     </body>

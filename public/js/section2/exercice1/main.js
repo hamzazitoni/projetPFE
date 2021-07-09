@@ -37,10 +37,13 @@ function draw() {
     gameBoard.innerHTML = '';
     drawSnake(gameBoard);
     drawFood(gameBoard);
+
 }
 
 function checkGameOver() {
     gameOver = outSideGrid(getSnakeHeade()) || snakeIntersection();
 }
+
+
 
 window.requestAnimationFrame(main);

@@ -1,0 +1,47 @@
+.questions {
+    min-height: 30px;
+    border: 2px dashed black;
+    padding: 5px;
+    width: 100%;
+}
+
+.QContent {
+    background-color: rgb(9, 134, 206);
+    border-radius: 100%;
+    color: white;
+    width: 100%;
+    height: 100%;
+    padding-top: 25px;
+    cursor: move;
+}
+
+.RContent {
+    width: 100%;
+    height: 100%;
+    color: white;
+    background-color: rgb(64, 173, 216);
+    padding-top: 22px;
+    font-weight: bold;
+}
+
+.okDragged {
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    border-radius: 20px;
+}
+
+.qt {
+    color: orange;
+}
+
+.an {
+    color: green;
+    margin-left: 3px;
+}
+
+.nokDragged {
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+}

@@ -1,0 +1,41 @@
+.questionContentItem {
+    background-color: #2d78da8e;
+    margin: 1px;
+    border-radius: 3px;
+}
+
+.ok {
+    color: green;
+    margin-left: 4px;
+}
+
+.noOk {
+    color: #804400;
+    margin-left: 4px;
+}
+
+.reponseBoxe {
+    /*background-color: rgb(34, 137, 233);*/
+    min-height: 80px;
+    border: 2px dashed black;
+    padding: 10px;
+}
+
+.box {
+    padding: 2px;
+}
+
+#adjectifDiv {
+    min-height: 30px;
+    border: 2px dashed green;
+    padding: 10px;
+}
+
+#validationBtn {
+    /*background-color: rgb(0, 119, 255);*/
+    color: black;
+}
+
+#avantageux {
+    padding: 3px;
+}

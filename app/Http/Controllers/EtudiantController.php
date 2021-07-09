@@ -84,10 +84,9 @@ class EtudiantController extends Controller
     }
 
     public function home(){
-        $sections = Section::all();
         $module_informations = Module::where('etudiant_id',session('etudiant_id'))->first();
         return view('home.home',[
-            'sections' => $sections,
+            'sections' => Section::all(),
             'module_informations' => $module_informations,
             'coach_name' => $this->getCoach(session('etudiant_id')),
             'totalScore' => $this->getEtudiantTotalScore(),
