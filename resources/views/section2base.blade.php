@@ -41,7 +41,7 @@
                         <img src="{{ asset('images/section1/iconM3.svg')}}" width="40%">
                     </a>
                     <div class="score">
-                        score : {{ $totalScore }}
+                        score : <span id = "scoregeneral" class="ml-1">0</span>
                     </div>
                 </div>
                 <div class="header-right-part">
@@ -55,9 +55,7 @@
         @yield('content')
 
 
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
         crossorigin="anonymous"></script>

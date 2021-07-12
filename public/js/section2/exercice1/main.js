@@ -1,49 +1,57 @@
-import { SNAKE_SPEED, getSnakeHeade, snakeIntersection } from './snake.js';
-import { update as updateSnake, draw as drawSnake } from './snake.js';
-import { update as updateFood, draw as drawFood } from './food.js';
-import { outSideGrid } from './checkGameOver.js';
+import { createQuestionsInDom } from './putQuestionInDom.js';
+import { disableValidationButton } from './putQuestionInDom.js';
 
+export function main() {
+    createQuestionsInDom();
+    disableValidationButton();
+    document.getElementById('showPartieBtn').addEventListener('click', () => {
+        $('#contentBoxe').show();
+    })
+    let propositionsItems = document.querySelectorAll('.questionContentItem');
+    let reponseBoxe = document.getElementById('reponseBoxe');
 
-let lastRenderTime = 0;
-let gameOver = false;
-const gameBoard = document.getElementById('game-board');
-
-function main(currentTime) {
-    /*if (gameOver) {
-        return alert('game over');
-    }*/
-
-    if (gameOver) {
-        if (confirm('You lose the game,Press OK to restart.')) {
-            window.location.reload();
-        }
-        return;
+    let draggedItem = null;
+    for (let i = 0; i < propositionsItems.length; i++) {
+        const item = propositionsItems[i];
+        item.addEventListener('dragstart', e => {
+            draggedItem = item;
+        })
+        item.addEventListener('dragend', e => {
+            setTimeout(() => {
+                draggedItem = null;
+            }, 0)
+        })
+        reponseBoxe.addEventListener('dragover', e => {
+            e.preventDefault();
+        })
+        reponseBoxe.addEventListener('dragenter', e => {
+            e.preventDefault();
+            reponseBoxe.style.backgroundColor = 'rgb(34, 137, 233)';
+            disableValidationButton();
+        })
+        reponseBoxe.addEventListener('dragleave', e => {
+            reponseBoxe.style.backgroundColor = 'white';
+            disableValidationButton();
+        })
+        reponseBoxe.addEventListener('drop', e => {
+            draggedItem.classList.add('isDragged');
+            reponseBoxe.appendChild(draggedItem);
+            reponseBoxe.style.backgroundColor = 'white';
+            disableValidationButton();
+        })
     }
-    window.requestAnimationFrame(main);
-    const secondsSinceLastRender = (currentTime - lastRenderTime) / 1000;
-    if (secondsSinceLastRender < 1 / SNAKE_SPEED) return;
-    lastRenderTime = currentTime;
-    update()
-    draw();
-    checkGameOver();
 }
 
-function update() {
-    updateSnake();
-    updateFood();
-}
-
-function draw() {
-    gameBoard.innerHTML = '';
-    drawSnake(gameBoard);
-    drawFood(gameBoard);
-
-}
-
-function checkGameOver() {
-    gameOver = outSideGrid(getSnakeHeade()) || snakeIntersection();
-}
-
-
-
-window.requestAnimationFrame(main);
+$(function() {
+    $.get('http://127.0.0.1:8000/score/add', { sectionID: 2 },
+        (data) => {
+            document.getElementById('scoregeneral').innerHTML = data.score;
+        })
+    $.get('http://127.0.0.1:8000/vie/get',
+        (data) => {
+            document.getElementById('progression').style.width = data.vie + "%";
+        })
+    $('#statistiqueContent').hide();
+    $('#contentBoxe').hide();
+    main()
+})

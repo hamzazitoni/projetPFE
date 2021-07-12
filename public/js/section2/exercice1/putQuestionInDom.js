@@ -1,8 +1,9 @@
-import { questions, getQuestionById } from './exerciceContent.js';
+import { getShuffleQuestions, questions as q, getQuestionById } from '../exercice2/exerciceContent.js';
 import { main } from './main.js';
+let questions = getShuffleQuestions(q);
 
 let adjectifDiv = document.getElementById('adjectifDiv');
-let globaleScore = 0;
+let globalScore = 0;
 export function createQuestionsInDom() {
     questions.forEach(question => {
         let questionDiv = document.createElement('div');
@@ -26,7 +27,7 @@ export function createQuestionsInDom() {
 
 export function disableValidationButton() {
     let areDragged = document.querySelectorAll('.isDragged');
-    if (areDragged.length >= 10) {
+    if (areDragged.length >= 1) {
         validationBtn.removeAttribute("disabled");
         validationBtn.style.backgroundColor = 'rgb(0, 119, 255)';
         validationBtn.style.color = 'white';
@@ -38,32 +39,28 @@ export function disableValidationButton() {
 
 validationBtn.addEventListener("click", () => {
     let score = 0;
-    let desavantageuxBoxe = document.getElementById('desavantage').children;
-    let avantageuxBoxe = document.getElementById('avantage').children;
-    for (let i = 0; i < desavantageuxBoxe.length; i++) {
-        let item = desavantageuxBoxe[i];
+    let avantageuxBoxe = document.getElementById('reponseBoxe').children;
+    for (let i = 0; i < avantageuxBoxe.length; i++) {
+        let item = avantageuxBoxe[i];
         let questionItem = getQuestionById(+item.getAttribute('id'));
         if (questionItem.point == -1) {
             ++score;
+        } else {
+            --score;
         }
     }
-    for (let j = 0; j < avantageuxBoxe.length; j++) {
-        let item = avantageuxBoxe[j];
-        let questionItem = getQuestionById(+item.getAttribute('id'));
-        if (questionItem.point == 1) {
-            ++score;
-        }
+    globalScore = score;
+
+    document.getElementById('scoregame').innerHTML = globalScore + " / " + 30 + " et vous avez + " + (+score * 2 + 2);
+    if (globalScore <= 0) {
+        document.getElementById('btnNext').setAttribute('disabled', 'disabled');
+        document.getElementById('scoregame').innerHTML = score + " / " + 30 + " et vous avez + " + 0;
     }
-    globaleScore = score;
-    $.get('http://127.0.0.1:8000/score/add', { score: score * 2, sectionID: 2 },
-        (data) => {
-            document.getElementById('scoregeneral').innerHTML = data.score;
-        })
-    $.get('http://127.0.0.1:8000/vie/get', { add: 10 },
-        (data) => {
-            document.getElementById('progression').style.width = data.vie + "%";
-        })
-    document.getElementById('scoregame').innerHTML = score + " / " + 30 + " et vous avez +" + (+score * 2 + 2);
+    if (score >= 6) {
+        document.getElementById('appreciationcontent').innerHTML = 'Vous êtes considéré comme supérieur à la moyenne dans le dommaine de la créativité.'
+    } else {
+        document.getElementById('appreciationcontent').innerHTML = 'Vous êtes considéré comme inférieur à la moyenne dans le dommaine de la créativité.'
+    }
     setTimeout(() => {
         $('#statistiqueContent').show();
         $('#contentBoxe').hide();
@@ -71,15 +68,23 @@ validationBtn.addEventListener("click", () => {
     }, 500);
 })
 
-document.getElementById('redoBTN').addEventListener('click', () => {
-    $.get('http://127.0.0.1:8000/score/add', { decraseScore: globaleScore * 2, sectionID: 2 },
+document.getElementById('btnNext').addEventListener('click', () => {
+    $.get('http://127.0.0.1:8000/score/add', { score: globalScore * 2, sectionID: 2 },
         (data) => {
             document.getElementById('scoregeneral').innerHTML = data.score;
         })
-    $.get('http://127.0.0.1:8000/vie/get', { minus: 10 },
+    $.get('http://127.0.0.1:8000/vie/get', { add: 25 },
         (data) => {
             document.getElementById('progression').style.width = data.vie + "%";
         })
+})
+
+document.getElementById('redoBTN').addEventListener('click', () => {
+    $.get('http://127.0.0.1:8000/vie/get', { minus: 5 },
+        (data) => {
+            document.getElementById('progression').style.width = data.vie + "%";
+        })
+    globalScore = 0;
     setTimeout(() => {
         $('#statistiqueContent').hide();
         $('#contentBoxe').hide();

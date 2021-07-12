@@ -6,27 +6,27 @@ export const questions = [{
     {
         id: 2,
         content: "C'est n'est pas...",
-        answerId: [5, 8]
+        answerId: [8]
     },
     {
         id: 3,
-        content: "Suivre ...",
+        content: "Suivre les ...",
         answerId: [7]
     },
     {
         id: 4,
         content: "Etre ...",
-        answerId: [5]
+        answerId: [5, 9]
     },
     {
         id: 5,
-        content: "Ce ... n'est pas.",
+        content: "Ce  ... mon domaine",
         answerId: [1]
     },
     {
         id: 6,
         content: "Ne pas être ...",
-        answerId: [5, 6]
+        answerId: [6]
     },
     {
         id: 7,
@@ -73,7 +73,7 @@ export const answers = [{
     },
     {
         id: 6,
-        content: "déraisonnement",
+        content: "déraisonnable",
         answerTiket: 'Z'
     },
     {
@@ -94,9 +94,31 @@ export const answers = [{
 ];
 
 export function getQuestionById(id) {
-    return questions[id - 1];
+    let question = null;
+    questions.forEach(q => {
+        if (q.id == +id) {
+            question = q;
+        }
+    })
+    return question;
 }
 
 export function getAnswerById(id) {
-    return answers[id - 1];
+    let answer = null;
+    answers.forEach(a => {
+        if (a.id == +id) {
+            answer = a;
+        }
+    })
+    return answer;
+}
+
+export function questionsRandom(questions) {
+    questions.sort(() => Math.random() - 0.5);
+    return questions;
+}
+
+export function answersRandom(answers) {
+    answers.sort(() => Math.random() - 0.5);
+    return answers;
 }

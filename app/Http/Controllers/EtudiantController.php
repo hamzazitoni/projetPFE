@@ -109,9 +109,96 @@ class EtudiantController extends Controller
         ]);
     }
 
+    public function addSectionScore(){
+        $score = 0;
+        if(!empty($_GET['score'])){
+            DB::table('modules')->where([
+                ['etudiant_id',session('etudiant_id')],
+                ['section', $_GET['sectionID']],
+            ])->increment('etudiant_score', $_GET['score']);
+        }
+        if(!empty($_GET['decraseScore'])){
+            $module = Module::where([
+                ['etudiant_id',session('etudiant_id')],
+                ['section', $_GET['sectionID']],
+            ])->first();
+            $module->etudiant_score = $module->etudiant_score - $_GET['decraseScore'];
+            $module->save();
+        }
+        if(!empty($_GET['updateScoreSection'])){
+            $module = Module::where([
+                ['etudiant_id',session('etudiant_id')],
+                ['section', $_GET['sectionID']],
+            ])->first();
+            $module->etudiant_score = $_GET['updateScoreSection'];
+            $module->save();
+        }
+        if(isset($_GET['sectionID'])){
+            $score = $this->getEtudiantSectionTotalScore($_GET['sectionID']);
+        }
+        return response()->json([
+            'score' => $score
+        ]);
+    }
 
+    public function etudiantVieInfo(){
+        $vie = 0;
+        $etudiant = Etudiant::where('id',session('etudiant_id'))->first();
+        $etudiant_vie = $etudiant->etudiant_vie;
+        if(isset($_GET['add'])){
+            if($etudiant_vie < 100){
+                $etudiant->etudiant_vie = $etudiant->etudiant_vie + $_GET['add'];
+            }
+        }
+        if(isset($_GET['minus'])){
+            if($etudiant_vie > 0){
+                $etudiant->etudiant_vie = $etudiant->etudiant_vie - $_GET['minus'];
+            }
+        }
+        $etudiant->save();
+
+        $etudiantNouvelVieInfo = Etudiant::where('id',session('etudiant_id'))->first();
+
+        if($etudiantNouvelVieInfo->etudiant_vie < 0){
+            $vie = 0;
+            $etudiantNouvelVieInfo->etudiant_vie = 0;
+        }elseif($etudiantNouvelVieInfo->etudiant_vie > 100){
+            $vie = 100;
+            $etudiantNouvelVieInfo->etudiant_vie = 100;
+        }else{
+            $vie = $etudiantNouvelVieInfo->etudiant_vie;
+        }
+        $etudiantNouvelVieInfo->save();
+
+        return response()->json([
+            'vie' => $vie
+        ]);
+    }
 
     /*--------------------------Treatment part----------*/
+    public function getEtudiantSectionTotalScore($section){
+        $score = 0;
+        $moduleInformations = DB::table('modules')->where([
+            ['etudiant_id', session('etudiant_id')],
+            ['section', $section]
+            ])->first();
+        if(!empty($moduleInformations)){
+            $score = $moduleInformations->etudiant_score;
+        }else{
+            $module = new Module();
+            $module->etudiant_id = session('etudiant_id');
+            $module->section = $section;
+            $module->etudiant_score = 0;
+            $module->save();
+        }
+        return $score;
+    }
+
+    public function getEtudiantVie(){
+        $etudiantInfos = DB::table('etudiants')->where('etudiant_id', session('etudiant_id'))->first();
+        return $etudiantInfos->etudiant_vie;
+    }
+
 
     public function getCoach($id){
         $coach_id = Etudiant::where('id', $id)->first()->coach_id;

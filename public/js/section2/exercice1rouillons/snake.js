@@ -10,7 +10,7 @@ const snakeBody = [
     randomGridPosition()
 ];
 export function update() {
-    addSegments();
+    //addSegments();
     const inputDirection = getInputDirection();
     for (let i = snakeBody.length - 2; i >= 0; i--) {
         snakeBody[i + 1] = {...snakeBody[i] };

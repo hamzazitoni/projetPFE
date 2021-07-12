@@ -3,20 +3,48 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\EtudiantController;
 
-class Section2Controller extends Controller
+class Section3Controller extends Controller
 {
-    public function exercice1(EtudiantController $etudiantController){
-        return view('section2.exercice1',[
+
+    public function introduction(EtudiantController $etudiantController){
+        return view('section3.introduction',[
             'coach_name' => $etudiantController->getCoach(session('etudiant_id')),
             'totalScore' => $etudiantController->getEtudiantTotalScore(),
             'etudiant_name' => $etudiantController->getEtudiantName(session('etudiant_id')),
         ]);
     }
 
+
+    public function exercice1(EtudiantController $etudiantController){
+        return view('section3.exercice1',[
+            'coach_name' => $etudiantController->getCoach(session('etudiant_id')),
+            'totalScore' => $etudiantController->getEtudiantTotalScore(),
+            'etudiant_name' => $etudiantController->getEtudiantName(session('etudiant_id')),
+        ]);
+    }
+
+
+    public function exercice1_2(EtudiantController $etudiantController){
+        return view('section3.exercice1_2',[
+            'coach_name' => $etudiantController->getCoach(session('etudiant_id')),
+            'totalScore' => $etudiantController->getEtudiantTotalScore(),
+            'etudiant_name' => $etudiantController->getEtudiantName(session('etudiant_id')),
+        ]);
+    }
+
+
     public function exercice2(EtudiantController $etudiantController){
-        return view('section2.exercice2',[
+        return view('section3.exercice2',[
+            'coach_name' => $etudiantController->getCoach(session('etudiant_id')),
+            'totalScore' => $etudiantController->getEtudiantTotalScore(),
+            'etudiant_name' => $etudiantController->getEtudiantName(session('etudiant_id')),
+        ]);
+    }
+
+
+    public function chalenge(EtudiantController $etudiantController){
+        return view('section3.chalenge',[
             'coach_name' => $etudiantController->getCoach(session('etudiant_id')),
             'totalScore' => $etudiantController->getEtudiantTotalScore(),
             'etudiant_name' => $etudiantController->getEtudiantName(session('etudiant_id')),
@@ -24,26 +52,11 @@ class Section2Controller extends Controller
     }
 
     public function exercice3(EtudiantController $etudiantController){
-        return view('section2.exercice3',[
+        return view('section3.exercice3',[
             'coach_name' => $etudiantController->getCoach(session('etudiant_id')),
             'totalScore' => $etudiantController->getEtudiantTotalScore(),
             'etudiant_name' => $etudiantController->getEtudiantName(session('etudiant_id')),
         ]);
     }
 
-    public function exercice4(EtudiantController $etudiantController){
-        return view('section2.exercice4',[
-            'coach_name' => $etudiantController->getCoach(session('etudiant_id')),
-            'totalScore' => $etudiantController->getEtudiantTotalScore(),
-            'etudiant_name' => $etudiantController->getEtudiantName(session('etudiant_id')),
-        ]);
-    }
-
-    public function challenge(EtudiantController $etudiantController){
-        return view('section2.challenge',[
-            'coach_name' => $etudiantController->getCoach(session('etudiant_id')),
-            'totalScore' => $etudiantController->getEtudiantTotalScore(),
-            'etudiant_name' => $etudiantController->getEtudiantName(session('etudiant_id')),
-        ]);
-    }
 }

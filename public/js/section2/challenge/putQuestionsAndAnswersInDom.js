@@ -1,7 +1,9 @@
 import { questions, answers } from './exerciceContent.js';
 
 let questionBoxe = document.getElementById('questionBoxe');
+let afairDiv = document.getElementById('afair');
 let answerBoxe = document.getElementById('answerBoxe');
+
 export function putQuestionsAndAnswersInDom() {
     putQuestions();
     putAnswers();
@@ -48,8 +50,56 @@ function putAnswers() {
     })
 }
 
-export function putNextBTN() {
+export function putNextBTN(score) {
     let div = document.createElement('div');
     div.classList.add('col-4');
+    let nextBTN = document.createElement('button');
+    nextBTN.addEventListener('click', e => {
+        console.log('nextBTN clicked');
+    })
+    nextBTN.innerHTML = "Suivant";
+    nextBTN.setAttribute('id', 'nextBTN');
+    nextBTN.classList.add('nextBTN');
+    div.appendChild(nextBTN);
+    afairDiv.appendChild(div);
+
+}
+export function putReDoBTN(score) {
+    let div = document.createElement('div');
+    div.classList.add('col-4');
+
+    let putReDoBTN = document.createElement('button');
+    putReDoBTN.addEventListener('click', e => {
+        console.log('putReDoBTN clicked');
+    })
+    putReDoBTN.innerHTML = "Refaire";
+    putReDoBTN.setAttribute('id', 'putReDoBTN');
+    putReDoBTN.classList.add('putReDoBTN');
+
+    div.appendChild(putReDoBTN);
+    afairDiv.appendChild(div);
+
+}
+
+export function putSuccesBTN(score) {
+    putReDoBTN(score);
+    putNextBTN(score);
+    putResultBTN(score);
+}
+
+export function putResultBTN(score) {
+    let div = document.createElement('div');
+    div.classList.add('col-4');
+
+    let putResultBTN = document.createElement('button');
+    putResultBTN.addEventListener('click', e => {
+        console.log(score);
+    })
+    putResultBTN.innerHTML = 'Correction';
+    putResultBTN.setAttribute('id', 'putResultBTN');
+    putResultBTN.classList.add('putResultBTN');
+
+    div.appendChild(putResultBTN);
+    afairDiv.appendChild(div);
 
 }

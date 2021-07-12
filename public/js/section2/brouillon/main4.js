@@ -1,5 +1,7 @@
-import { putQuestionsAndAnswersInDom } from './putQuestionsAndAnswersInDom.js';
-import { getQuestionById, getAnswerById } from './exerciceContent.js';
+import { putQuestionsAndAnswersInDom } from '../exercice4/putQuestionsAndAnswersInDom.js';
+import { putSuccesBTN } from '../exercice4/putQuestionsAndAnswersInDom.js';
+
+import { getQuestionById, getAnswerById } from '../exercice4/exerciceContent.js';
 
 
 putQuestionsAndAnswersInDom();
@@ -11,7 +13,8 @@ $(function() {
 
     let draggedItem = null;
     let score = 0;
-    for (let i = 0; i < questionsItems.length; i++) {
+    let tentative = 0;
+    /*for (let i = 0; i < questionsItems.length; i++) {
         let ok = false;
         const item = questionsItems[i];
         item.addEventListener('dragstart', e => {
@@ -39,29 +42,33 @@ $(function() {
                 if (question.answerId.includes(answer.id)) {
                     reponseBoxe.classList.add('okDragged');
                     reponseBoxe.style.backgroundColor = "green";
+                    document.getElementById(question.id).parentElement.remove();
                     ok = true;
                 } else {
+                    document.getElementById(question.id).
                     reponseBoxe.classList.add('nokDragged');
                     reponseBoxe.style.backgroundColor = "red";
                 }
-                document.getElementById(question.id).parentElement.remove();
                 if (ok) {
-                    score++;
+                    ++score;
                     document.getElementById('progression').style.width = score * 11.12 + "%";
                     ok = false;
                 }
                 if (document.getElementById('questionBoxe').childNodes.length - 1 == 0) {
                     let text = +(score * 2 + 2) + " / " + 20;
                     $('.scoregame').text(text);
-                    if (score >= 5) {
+                    if (score >= 1) {
                         $('.questionsBoxeContainer').hide(3000);
                         $('.decission').text("Vous avez réussit cet exercice à plus de 50%, choisissez une des actions ci-dessous.");
-                        $('.statistiqueContent').show(10000);
+                        putSuccesBTN(score);
+                        setTimeout(() => {
+                            $('.statistiqueContent').show();
+                        }, 1000);
                     } else {
-
+                        putReDoBTN();
                     }
                 }
             })
         }
-    }
+    }*/
 })

@@ -4,7 +4,7 @@
 @endsection
 
 @section('style')
-    <link rel="stylesheet" href="{{asset('css/section2/exercice4/main.css')}}" />
+    <link rel="stylesheet" href="{{asset('css/section2/exercice3/main.css')}}" />
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@
 
         </div>
     </div>
-    <div class="container questionsBoxeContainer" >
+    <div class="container">
         <div class="row">
             <div class="col-md-6 mb-2">
                 <div class="row">
@@ -24,9 +24,7 @@
                         <div id="avantageux" class="row">
                             <div class="col-12 box">
                                 <div class="col-12 ">
-                                    <div id = "questionBoxe" class="questions row">
-
-                                    </div>
+                                    <div id = "questionBoxe" class="questions row"></div>
                                 </div>
                             </div>
                         </div>
@@ -51,37 +49,8 @@
             </div>
         </div>
     </div>
-    <div class="container mt-3 statistiqueContent">
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6 mb-2">
-                <div class="row">
-                    <div class="pl-2 pr-2 pt-2 pb-2 col-12 statistiquesContainer">
-                        <h3 class="statistiques pl-3">Statistiques : </h3>
-                        <p class="appreciation mt-1">
-                            Vous avez passez cet exercice avec un score de <span class="scoregame ml-2"> 0 / 20</span>.
-                        </p>
-                        <div class="decission mt-1">
 
-                        </div>
-                        <div class="afair pl-4 row" id='afair'>
-                            <div class="col-4 ">
-                                <button>Refaire</button>
-                            </div>
-                            <div class="col-4 ">
-                                <button>Resulta</button>
-                            </div>
-                            <div class="col-4 ">
-                                <button>Suivant</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3"></div>
-        </div>
-    </div>
 @endsection
 @section('script')
-    <script defer type="module" src="{{asset('/js/section2/exercice4/main.js')}}"></script>
+    <script defer type="module" src="{{asset('/js/section2/exercice3/main.js')}}"></script>
 @endsection

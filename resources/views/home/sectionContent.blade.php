@@ -15,7 +15,7 @@
     <div class="left-menu">
         <div class="img-icon">
             <img src="{{ asset('images/sectionContentHeader.jpeg')}}" alt="">
-            <p>Gestion du Temps</p>
+            <p>Résoluon de Prolème</p>
             <a href="">Dashboard</a>
         </div>
     </div>
@@ -42,7 +42,7 @@
               </div>
               <div class="col-md-8 ">
                 <div class="card-body">
-                  <h5 class="card-title badge rounded-pill bg-light text-dark even-larger-badge ">resolution creative de probleme</h5>
+                  <h5 class="card-title badge rounded-pill bg-light text-dark even-larger-badge ">@yield('titleSection')</h5>
                     <div class="row">
                         <!-- DEMO 5 -->
                         <div class="py-5">

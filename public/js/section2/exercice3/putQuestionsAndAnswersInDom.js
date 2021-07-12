@@ -1,7 +1,13 @@
-import { questions, answers } from './exerciceContent.js';
+import { questions as Q, answers as A } from '../exerciceContent.js';
+import { questionsRandom, answersRandom } from '../exerciceContent.js';
+
+
+let questions = questionsRandom(Q);
+let answers = answersRandom(A);
 
 let questionBoxe = document.getElementById('questionBoxe');
 let answerBoxe = document.getElementById('answerBoxe');
+
 export function putQuestionsAndAnswersInDom() {
     putQuestions();
     putAnswers();
@@ -45,5 +51,30 @@ function putAnswers() {
 
         answerDiv.appendChild(content);
         answerBoxe.appendChild(answerDiv);
+    })
+}
+
+export function putQuestionsInDescription() {
+    questions.forEach(question => {
+        let questionDiv = document.getElementById('questionsContainer');
+        let content = document.createElement('p');
+
+
+        content.innerHTML = question.id + " - " + question.content;
+
+        questionDiv.appendChild(content);
+    })
+}
+
+
+export function putAnswersInDescription() {
+    answers.forEach(answer => {
+        let answerDiv = document.getElementById('answersContainer');
+        let content = document.createElement('p');
+
+
+        content.innerHTML = answer.answerTiket + " - " + answer.content;
+
+        answerDiv.appendChild(content);
     })
 }
