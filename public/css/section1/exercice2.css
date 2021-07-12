@@ -1,0 +1,146 @@
+
+#exo2{
+    display: flex;
+    flex-direction:row-reverse;
+    padding: 5% 5% ;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    position: relative;
+    top: 3vh
+
+}
+.bigBox{
+
+    position: relative;
+    border: 2px solid black;
+    border-radius :9px;
+    height:65vh;
+    margin-left: 30%;
+    width:25%;
+    overflow: hidden;
+}
+.boxIn{
+    width:100%;
+    height:100%;
+    overflow: hidden;
+}
+#boxChoice{
+    height:100%;
+    animation:  linear 3s infinite alternate  slideUp;
+}
+.box{
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    height:10px;
+}
+#boxChoice:hover{
+    animation-play-state: paused;
+}
+.choice{
+    margin-bottom: 30px;
+    box-shadow: 0px 0px 5px #30BCED;
+    width: 80%;
+    height: auto;
+    font-size :25px;
+    background-color: #ffff;
+    border-radius: 10px;
+    text-align: center;
+    padding: 2px;
+    cursor: move;
+    opacity: 0.8;
+}
+.choice:hover{
+    opacity: 1;
+    transform:scale(1.15);
+    animation-play-state: paused;
+
+}
+#boxAns{
+    width:50%;
+    box-shadow: 0px 0px 5px #30BCED;
+    float: right;
+    height: 65vh;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 10px;
+    overflow: hidden;
+}
+#boxAns h2{
+    margin-top: -10px;
+    height:auto;
+    width: 100%;
+    background-color: black;
+    color: white;
+}
+
+
+.up,.down{
+    position: relative;
+    z-index: 20;
+    color: #30BCED;
+    font-size:20px;
+    text-align: center;
+    background-color:black;
+    opacity: 0.9;
+    cursor: pointer;
+}
+.down{
+    top:-13%;
+}
+@keyframes slideUp {
+    from{
+        transform: translateY(0%);
+    }
+    to{
+        transform: translateY(-80%);
+
+    }
+}
+/* wive */
+.wive{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background:#30BCED;
+    top: 80%;
+    border-radius: 30% 10% 0% 0%;
+    
+}
+/* button on off */
+.switch{
+    position: relative;
+    display: inline-block;
+    width:100px;
+    height:30px;
+}
+.slider{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius:34px;
+}
+.switch input{display: none;}
+.slider:before{
+    position: absolute;
+    content:"";
+    height: 25px;
+    width: 25px;
+    left:5px;
+    bottom: 2.8px;
+    background-color:white;
+    transition:0.4s;
+    border-radius:50px;
+}
+input:checked + .slider{
+    background-color:#30BCED;
+    box-shadow: 0px 0px 3px #30BCED;
+}
+input:checked + .slider:before{
+    transform:translateX(50px);
+}

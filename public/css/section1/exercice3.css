@@ -1,0 +1,127 @@
+#exo3{
+    position: relative;
+    left:10%;
+    top:-10vh;
+}
+table {
+    font-size: 30px;
+    box-shadow: 0px 5px 20px rgba(19,56,106,0.40);
+    background-color: white;
+    /* width:70%;
+    height:10vh; */
+}
+td,th{
+   text-align:center;
+   border-left: 3px solid #30BCED;
+   border-bottom: 1px solid #30BCED;
+   margin: 3px;
+   background-color:rgb(243, 243, 243);
+   padding: 3px;
+   box-shadow: 0px 0px 10px 30BCED;
+   border-radius: 7px;
+}
+#empty{
+   background-color:white;
+   border: none;
+   border-bottom: 1px solid #30BCED;
+
+}
+#exo3 .slideRangeContainer{
+   width:50%;
+   height: 20px;
+   position: relative;
+   left: 15%;
+   top: 5px;
+   display: flex;
+
+}
+
+#exo3 .value{
+   position: relative;
+   margin-top:-15px;
+   opacity: 0.7;
+   margin-left: 1%;
+   left: 10%;
+}
+#exo3 .slideRanger{
+   -webkit-appearance: none;
+   width:110%;
+  border:3px solid black;
+   /* border:none; */
+   height:100%;
+   background: linear-gradient(90deg,black 60%, black 60%);
+   outline:none;
+   opacity:0.9;
+   transition: opacity 0.2s;
+   border-radius:20px;
+   box-shadow: 0px 0px 3px black;
+}
+#exo3 .slideRanger:hover{
+   opacity: 1;
+}
+#exo3 .slideRanger::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  width:25px;
+  height:25px;
+  background:#30BCED;
+  border:2px solid black;
+  border-radius:50%;
+  cursor: pointer;
+  box-shadow: 0px 0px 7px #30BCED;
+  box-shadow: 0px 0px 8px #30BCED;
+
+
+}
+#exo3 .slideRanger::-moz-range-thumb{
+  width:25px;
+  height:25px;
+  background:#30BCED;
+  border-radius:50%;
+  cursor: pointer;
+  border:2px solid black;
+  border-left: none;
+  box-shadow: 0px 0px 8px #30BCED;
+
+}
+
+
+#exo3 .bt{
+   background:black;
+   color: #30BCED;
+   width:25%;
+   font-size:30px;
+  font-family: 'Times New Roman', Times, serif;
+  margin-top: 3%;
+  box-shadow: 0px 0px 8px #30BCED;
+  border-radius: 10px;
+  border: none;
+  opacity: 0.9;
+}
+.validate:hover{
+  box-shadow: 0px 0px 1px #30BCED;
+  color: white;
+  opacity: 1;
+
+}
+.question2{
+   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+   position: relative;
+   z-index: 999;
+   background-color:white;
+   width:50%;
+   border-radius:10px;
+   box-shadow:0px 0px 5px black;
+   height:auto;
+   left:23%;
+   top: 0%;
+   font-size:25px;
+   text-align: center;
+   margin: 2px;
+ }
+ .btnFermer1 {
+   position: relative;
+   background-color:black;
+   color:#30BCED;
+   width:15%;
+   top:-15%;
+ }
