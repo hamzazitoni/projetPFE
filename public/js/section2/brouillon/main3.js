@@ -138,3 +138,12 @@ $(function() {
         }
     }
 })
+
+/**
+Obstacle, ce qui bloque une action.
+
+Définitions du blocage mental. une incapacité à se souvenir
+ou à penser à quelque chose que vous pouvez normalement faire ;
+souvent causée par une tension émotionnelle.
+par exemple je connaisais bien son n nom mais j'ai oublier
+ */

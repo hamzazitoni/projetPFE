@@ -83,11 +83,13 @@ document.getElementById('redoBTN').addEventListener('click', () => {
     setTimeout(() => {
         $('#statistiqueContent').hide();
         $('#contentBoxe').hide();
+        //$('#appreciationcontent').hide();
         $('#descriptionBigBox').show();
     }, 500);
-    document.getElementById('reponseBoxe').innerHTML = '';
+    document.getElementById('avantage').innerHTML = '';
+    document.getElementById('desavantage').innerHTML = '';
     document.getElementById('adjectifDiv').innerHTML = '';
     disableValidationButton();
-    document.getElementById('appreciationcontent').innerHTML = '';
+    globaleScore = 0;
     main();
 })

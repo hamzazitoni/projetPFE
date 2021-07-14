@@ -10,25 +10,67 @@ use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
-    public function adminDashBoard(){
-        return view('admin.adminDashBoard');
+    public function adminConnxion(Request $request){
+        $errorConnexion = "";
+        if(!empty($_GET['secretKey'])){
+            if(!preg_match('/^AD[0-9]{3}m[A-Z]{3}MIN$/',$_GET['secretKey'])){
+                $errorConnexion = "Vous n'avez pas le bon code de connexion en tant qu'administrateur";
+            }
+        }
+        if(empty($errorConnexion)){
+            $request->session()->put('isAdmin',true);
+            return response()->json([
+                'error' => '',
+            ]);
+        }else{
+            return response()->json([
+                'error' => $errorConnexion,
+            ]);
+        }
     }
 
-    public function checkStudentToCoach(Request $request){
-        $validator = Validator::make($request->all(),[
-            'coach_id' => 'required',
-            'etudiant_id' => 'required',
-        ]);
-
-        if($validator->fails()){
-            $request->session()->flash('error', "Toute les informations requise ne sont pas fournies.");
-            return back()->withInput();
+    public function isloggedAsAdmin(){
+        if(session()->has('isAdmin')){
+            return response()->json([
+                'isAdmin' => true,
+            ]);
+        }else{
+            return response()->json([
+                'isAdmin' => false,
+            ]);
         }
-        $etudiant = Etudiant::find(intval($request->input('etudiant_id')));
-        $etudiant->coach_id = $request->input('coach_id');
-        $etudiant->save();
+    }
 
-        return redirect(route('addStudentToCoach'));
+    public function logout(){
+        if(session()->has('isAdmin')){
+            session()->pull('isAdmin');
+        }
+    }
+
+    public function addACoach(){
+        if(isset($_GET['coachName']) AND isset($_GET['matricule'])){
+            if(!preg_match('/^[A-Z0-9]{6,}$/',$_GET['matricule'])){
+                $matriculeError = "Le matricule ne correspond pas au format attendu.";
+            }
+            if(!preg_match('/^[A-Za-z]/',$_GET['coachName'])){
+                $nameError = "Le nom doit commencer par une lettre.";
+            }
+            if(!isset($matriculeError) AND !isset($nameError)){
+                $coach = new Coach();
+                $coach->name = $_GET['coachName'] ;
+                $coach->matricule = $_GET['matricule'];
+                $coach->save();
+                return response()->json([
+                    'message' => 'Le coach '.$coach->name.' a été ajouté avec succès.',
+                    'error' => '',
+                ]);
+            }else{
+                return response()->json([
+                    'message' => '',
+                    'error' => 'Veillez bien remplir tous les champs',
+                ]);
+            }
+        }
     }
 
     public function giveACoachToStudent(){
@@ -38,52 +80,14 @@ class AdminController extends Controller
         ]);
     }
 
-    public function addACoach(){
-        return  view('admin.addCoach');
-    }
-
-    public function checkAddCoach(Request $request){
-        $request->validate([
-            'coachName' => 'required|min:2',
-            'matricule' => 'unique:coaches',
-        ]);
-
-        if(!preg_match('/^[A-Z0-9]{6,}$/',$request->input('matricule'))){
-            $request->session()->flash('matriculeError',"Le matricule doit contenir au moins 6 caractères de A-Z/0-9.");
-            return back()->withInput();
-        }
-
-        $coach = new Coach();
-        $coach->name = $request->input('coachName');
-        $coach->matricule = $request->input('matricule');
-        $coach->save();
-
-        $request->session()->flash('succes', "Le coach ".$coach->name." a été ajouté avec succès.");
-        return redirect(route('addACoach'));
-    }
-
-    public function adminConnxion(){
-        return view('admin.adminConnxion');
-    }
-
-    public function checkAdminConnxion(Request $request){
-        $request->validate([
-            'secretKey' => 'required',
-        ]);
-
-        if(!preg_match('/^AD[0-9]{3}m[A-Z]{3}MIN$/',$request->input('secretKey'))){
-            $request->session()->flash('secretKeyError',"La clé de connexion en tanque qu'administrateur est invalide.");
-            return back()->withInput();
-        }
-
-        $request->session()->put('isAdmin',true);
-        return redirect(route('adminDashBoard'));
-    }
-
-    public function logout(){
-        if(session()->has('isAdmin')){
-            session()->pull('isAdmin');
-            return redirect(route('adminConnexion'));
+    public function checkStudentToCoach(Request $request){
+        if(isset($_GET['etudiant_id']) AND isset($_GET['coach_id'])){
+            $etudiant = Etudiant::find(intval($_GET['etudiant_id']));
+            $etudiant->coach_id = intval($_GET['coach_id']);
+            $etudiant->save();
+            return response()->json([
+                'message' => "Affectation éffectuée avec succès",
+            ]);
         }
     }
 

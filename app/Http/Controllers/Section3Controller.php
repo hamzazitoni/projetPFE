@@ -59,4 +59,12 @@ class Section3Controller extends Controller
         ]);
     }
 
+    public function exercice3Answer(EtudiantController $etudiantController){
+        return view('section3.exercice3Answer',[
+            'coach_name' => $etudiantController->getCoach(session('etudiant_id')),
+            'totalScore' => $etudiantController->getEtudiantTotalScore(),
+            'etudiant_name' => $etudiantController->getEtudiantName(session('etudiant_id')),
+        ]);
+    }
+
 }

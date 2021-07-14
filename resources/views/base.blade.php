@@ -9,7 +9,6 @@
         <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.10.2/Sortable.min.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://kit.fontawesome.com/887c56acc8.js" crossorigin="anonymous"></script>
 
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -20,6 +19,8 @@
         <link rel="stylesheet" href="{{asset('css/section1/header.css')}}">
         <!-- css of section1 -->
         <link rel="stylesheet" href="{{asset('css/section1/index.css')}}" />
+        <link rel="stylesheet" href="{{asset('css/sectionsContent/main.css')}}" />
+        <link rel="stylesheet" href="{{asset('css/sectionsContent/section_css.css')}}" />
         <title>@yield('title','Resolution de problemes')</title>
     </head>
     <body>
@@ -28,9 +29,17 @@
                 <p>Resolution des problemes</p>
                 <div class="user_profil">
                     <img src="{{ asset('images/section1/avatar.svg') }}">
+                    <div class="stars">
+                        <div class="star">1</div>
+                        <div class="star">2</div>
+                        <div class="star">3</div>
+                        <div class="star">4</div>
+                    </div>
                 </div>
-                <h2 class="text-center">{{ $etudiant_name }}</h2>
-                <h3 class="">Coach : {{ $coach_name }}</h3>
+                <h2 class="text-center useName">{{ $etudiant_name }}</h2>
+                <p class="moyenne">Score moyenne: 09238</p>
+                <h2 class="coach">Coach : {{ $coach_name }}</h2>
+                <div class=logout><a href="#">Se Deconnecter</a></div>
             </div>
         </div>
         <div class="main-page">

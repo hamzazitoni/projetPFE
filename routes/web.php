@@ -33,15 +33,16 @@ Route::get('/home/section/{id}',[EtudiantController::class,'section'])->name('se
 
 
 //Administration Pages
-Route::get('admin/',[AdminController::class,'adminDashBoard'])->name('adminDashBoard')->middleware('isAdmin');
-Route::get('admin/addStudentToCoach',[AdminController::class,'giveACoachToStudent'])->name('addStudentToCoach')->middleware('isAdmin');
-Route::post('admin/checkStudentToCoach',[AdminController::class,'checkStudentToCoach'])->name('checkStudentToCoach');
-Route::get('admin/addCoach',[AdminController::class,'addACoach'])->name('addACoach')->middleware('isAdmin');
-Route::post('admin/checkAddCoach',[AdminController::class,'checkAddCoach'])->name('checkAddCoach');
-Route::get('admin/adminConnxion',[AdminController::class,'adminConnxion'])->name('adminConnexion');
-Route::post('admin/checkAdminConnxion',[AdminController::class,'checkAdminConnxion'])->name('checkAdminConnxion');
-Route::get('admin/logout',[AdminController::class,'logout'])->name('adminLogout')->middleware('isAdmin');
-Route::get('admin/delete/{id}',[AdminController::class,'deleteACoach'])->name('deleteACoach')->middleware('isAdmin');
+Route::get('/admin/connexion',[AdminController::class,'adminConnxion']);
+Route::get('/admin/isAdmin',[AdminController::class,'isloggedAsAdmin']);
+Route::get('/admin/logout',[AdminController::class,'logout']);
+Route::get('/admin/addACoach',[AdminController::class,'addACoach']);
+Route::get('/admin/addStudentToCaoch',[AdminController::class,'giveACoachToStudent']);
+Route::get('/admin/checkStudentToCoach',[AdminController::class,'checkStudentToCoach']);
+
+
+
+
 
 
 
@@ -50,6 +51,11 @@ Route::get('coach/coachConnexion',[CoachController::class,'coachConnexion'])->na
 Route::post('coach/checkCoachConnexion',[CoachController::class,'checkCoachConnexion'])->name('checkCoachConnexion');
 Route::get('coach/coachDashBoard',[CoachController::class,'coachDashBoard'])->name('coachDashBoard')->middleware('isCoach');
 Route::get('coach/logout',[CoachController::class,'coachLogout'])->name('coachLogout')->middleware('isCoach');
+
+//section1 routes
+Route::get('/home/section/1/apprendre',function(){ return view('section1/exercice'); })->name('apprendre')->middleware('isNotLogged');
+Route::get('/home/section/1/chalenge',function(){ return view('section1/chalenge'); })->name('chalenge')->middleware('isNotLogged');
+Route::get('/home/section/1/',function(){ return view('home/sectionContent');})->name('section1')->middleware('isNotLogged');
 
 //---------------------section2 routes--------------------------
 Route::get('home/section/{id}/cours/s2_exercice1',[Section2Controller::class,'exercice1'])->name('exercice1')->middleware('isNotLogged');
@@ -67,6 +73,8 @@ Route::get('/home/section/{id}/cours/exercice2',[Section3Controller::class,'exer
 Route::get('/home/section/{id}/cours/exercice3',[Section3Controller::class,'exercice3'])->name('s3_exercice3')->middleware('isNotLogged');
 Route::get('/home/section/{id}/cours/exercice1_2',[Section3Controller::class,'exercice1_2'])->name('s3_exercice1_2')->middleware('isNotLogged');
 Route::get('/home/section/{id}/chalenge',[Section3Controller::class,'chalenge'])->name('chalenge')->middleware('isNotLogged');
+Route::get('/home/section/{id}/cours/exercice3Answer',[Section3Controller::class,'exercice3Answer'])->name('exercice3Answer')->middleware('isNotLogged');
+
 
 /************************************API********************************* */
 //----------------------gestion score route--------------

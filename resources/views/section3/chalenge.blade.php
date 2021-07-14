@@ -1,5 +1,12 @@
 @extends('section3base') 
+
+@section('style')
+<link rel="stylesheet" href="{{asset('css/section3/chalenge.css') }}">
+
+    
+@endsection
 @section('content')
+
 
     {{-- <!-- start Quiz button --> --}}
     <div class="start_btn"><button>Start Quiz</button></div>

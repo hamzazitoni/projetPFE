@@ -73,7 +73,7 @@ document.getElementById('btnNext').addEventListener('click', () => {
         (data) => {
             document.getElementById('scoregeneral').innerHTML = data.score;
         })
-    $.get('http://127.0.0.1:8000/vie/get', { add: 25 },
+    $.get('http://127.0.0.1:8000/vie/get', { add: 20 },
         (data) => {
             document.getElementById('progression').style.width = data.vie + "%";
         })

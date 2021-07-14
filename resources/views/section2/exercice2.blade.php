@@ -73,8 +73,8 @@
                 <div class="row">
                     <div class="pl-2 pr-2 pt-2 pb-2 col-12 statistiquesContainer">
                         <h3 class="statistiques pl-3">Statistiques : </h3>
-                        <p class="appreciation mt-1">
-                            Vous avez passez cet exercice avec un score de <span class="scoregame ml-2" id='scoregame'> 0 / 20</span>.
+                        <p class="appreciation mt-1" id = "appreciationcontent">
+                            Vous avez passez cet exercice avec un score de <span class="scoregame ml-2" id='scoregame'></span> 0 / 20</span>.
                         </p>
                         <div class="afair pl-1 row mb-3" id='afair'>
                             <button id ='redoBTN' class="ml-3 mr-3">Refaire la partie</button><a class="ml-3" href="{{ route('exercice3',['id' => 2])}}"><button>Commencez la partie suivante</button></a>
