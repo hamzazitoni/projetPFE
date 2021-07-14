@@ -72,6 +72,44 @@
 }
 
 .descriptionContent {
-    box-shadow: 0px 0px 0px 2px rgb(0, 204, 255);
+    /*box-shadow: 0px 0px 0px 2px rgb(0, 204, 255);*/
     padding: 5px;
+}
+
+.description {
+    width: 75%;
+    margin: 60px auto;
+}
+
+.exercice-title h2 {
+    font-size: 25px;
+    position: relative;
+}
+
+.exercice-title h2::before {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: -10px;
+    width: 30px;
+    background-color: #30BCED;
+    height: 6px;
+    border-radius: 100px;
+}
+
+.exercice-description {
+    border: 1px solid #ccc;
+    padding: 5px 12px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .1);
+    border-left: 3px solid #30BCED;
+}
+
+.exercice-description p {
+    font-size: 17px;
+    line-height: 26px;
+}
+
+.BTN {
+    width: 100%;
 }

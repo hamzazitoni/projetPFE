@@ -27,7 +27,7 @@ export function createQuestionsInDom() {
 
 export function disableValidationButton() {
     let areDragged = document.querySelectorAll('.isDragged');
-    if (areDragged.length >= 1) {
+    if (areDragged.length >= 15) {
         validationBtn.removeAttribute("disabled");
         validationBtn.style.backgroundColor = 'rgb(0, 119, 255)';
         validationBtn.style.color = 'white';
@@ -80,10 +80,6 @@ document.getElementById('btnNext').addEventListener('click', () => {
 })
 
 document.getElementById('redoBTN').addEventListener('click', () => {
-    $.get('http://127.0.0.1:8000/vie/get', { minus: 5 },
-        (data) => {
-            document.getElementById('progression').style.width = data.vie + "%";
-        })
     globalScore = 0;
     setTimeout(() => {
         $('#statistiqueContent').hide();

@@ -1,17 +1,31 @@
-export function check() {
+export function verificationVie() {
     let vie = 0;
     $.get('http://127.0.0.1:8000/vie/get',
         (data) => {
             vie = data.vie;
-        })
-    if (vie == 0) return true;
-    return false;
+        }).then(() => {
+        /*if (vie == 0) {
+            $('.description').hide();
+            $('#challenge1').hide();
+            $('#challenge2').hide();
+            $('.vie').show();
+        }*/
+    })
 }
-export function verificationVie() {
-    if (check()) {
-        $('.description').hide();
+
+export function finalPopup() {
+    let status = 0;
+    $.get('http://127.0.0.1:8000/stars/add', { sectionID: 2 },
+        (data) => {
+            status = data.status;
+        }).then(() => {
         $('#challenge1').hide();
-        $('.vie').show();
-    }
+        $('#descriptionBigBox').hide();
+        $('#challenge2').hide();
+        if (status !== 0) {
+            $('#starStus').html('');
+        }
+        $('#final').show();
+    })
 
 }

@@ -18,6 +18,7 @@ class CreateSectionsTable extends Migration
             $table->string('name');
             $table->integer('scoreMax');
             $table->float('coefficient');
+            $table->integer('section_status')->default(0);
             $table->timestamps();
         });
     }

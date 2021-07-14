@@ -175,6 +175,30 @@ class EtudiantController extends Controller
         ]);
     }
 
+    public function addStars(){
+        $stars = 0;
+        $status = 0;
+        if(!empty($_GET['sectionID'])){
+            $status = Section::where('id',$_GET['sectionID'])->first()->section_status;
+        }
+        if(!empty($_GET['star']) AND !empty($_GET['sectionID'])){
+           if($status == 0){
+               $etudiant = Etudiant::where('id',session('etudiant_id'))->first();
+                $etudiant->etudiant_stars += $_GET['star'];
+                Section::where('id',$_GET['sectionID'])->update(['section_status' => 1]);
+                $etudiant->save();
+            }
+        }
+        if(!empty($_GET['sectionID'])){
+            $status = Section::where('id',$_GET['sectionID'])->first()->section_status;
+        }
+        $stars = Etudiant::where('id',session('etudiant_id'))->first()->etudiant_stars;
+        return response()->json([
+            'stars' => $stars,
+            'status' => $status,
+        ]);
+    }
+
     /*--------------------------Treatment part----------*/
     public function getEtudiantSectionTotalScore($section){
         $score = 0;

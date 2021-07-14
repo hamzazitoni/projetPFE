@@ -66,7 +66,7 @@
                         </p>
                         <p class="appreciationcontent mt-1" id='appreciationcontent'></p>
                         <div class="afair pl-1 row mb-3" id='afair'>
-                            <button id ='redoBTN' class="ml-3 mr-3">Refaire la partie</button> <a class="ml-4" href="/home"><button id='btnNext'>Passez le challenge</button></a>
+                            <button id ='redoBTN' class="ml-3 mr-3">Refaire la partie</button> <a class="ml-4" href="{{ route('s2_challenge',['id' => 2])}}"><button id='btnNext'>Passez le challenge</button></a>
                         </div>
                     </div>
                 </div>

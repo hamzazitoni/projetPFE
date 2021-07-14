@@ -1,13 +1,13 @@
 import { putQuestionsAndAnswersInDom, putQuestionsInDescription, putAnswersInDescription } from './putQuestionsAndAnswersInDom.js';
 import { getQuestionById, getAnswerById } from '../exerciceContent.js';
-import { putReDoBTN, putNextBTN, putResultBTN } from '../putBTN.js';
+import { putReDoBTN, putNextBTN } from '../putBTN.js';
 
 export function main() {
     putQuestionsAndAnswersInDom();
     $('.statistiqueContent').hide();
     $('.descritionBox').hide();
     document.getElementById('showPartieBtn').addEventListener('click', () => {
-        $('.descriptionBigBox').hide();
+        $('#descriptionBigBox').hide();
         $('.descritionBox').show();
         $('.questionsBoxeContainer').show();
     })
@@ -53,35 +53,36 @@ export function main() {
                 document.getElementById(question.id).parentElement.remove();
                 if (ok) {
                     score++;
-                    console.log(score);
                     ok = false;
                 }
                 if (document.getElementById('questionBoxe').childNodes.length - 1 == 0) {
-                    let text = +(score * 2 + 2) + " / " + 20;
+                    let text = +(score * 2) + " / " + 20;
+                    if (score == 9) {
+                        text = +(score * 2) + 2 + " / " + 20;
+                    }
                     $('.scoregame').text(text);
                     if (score >= 5) {
                         setTimeout(() => {
                             $('.questionsBoxeContainer').hide();
                         }, 2000);
                         $('.decission').text("Vous avez réussit cet exercice à plus de 50%, choisissez une des actions ci-dessous.");
-                        putReDoBTN();
-                        putResultBTN(score);
+                        putReDoBTN(score);
                         tentative = putNextBTN(score);
-                        console.log(tentative)
                         setTimeout(() => {
+                            $('#testContent').hide();
                             $('.statistiqueContent').show();
                         }, 2000);
                     } else {
                         setTimeout(() => {
                             $('.questionsBoxeContainer').hide();
+                            $('#descritionBox').hide();
+                            $('#testContent').hide();
                         }, 2000);
                         $('.decission').text("Vous n'avez pas réussit cet exercice à plus de 50%, vous devez le refaire.");
                         putReDoBTN(score);
-                        putResultBTN(score);
                         putNextBTN(score);
                         setTimeout(() => {
                             $('.statistiqueContent').show();
-                            $('descritionBox').hide();
                         }, 2000);
                     }
                 }

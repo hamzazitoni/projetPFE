@@ -110,11 +110,32 @@
     background-color: rgb(8, 141, 230);
 }
 
-.fa-thumbs-down {
+.thumb {
     color: red;
     font-size: 23px;
 }
 
-.vie {
+.viepopup {
     background-color: rgb(212, 208, 208);
+}
+
+.verrousBTN {
+    width: 100%;
+    min-height: 50px;
+}
+
+.succesBTN {
+    background-color: green;
+    color: white;
+}
+
+.errorBTN {
+    background-color: red;
+    color: white;
+}
+
+.star {
+    color: orange;
+    font-size: 50px;
+    font-weight: bold
 }

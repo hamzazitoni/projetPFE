@@ -1,7 +1,6 @@
 import { questions as Q, answers as A } from '../exerciceContent.js';
 import { questionsRandom, answersRandom } from '../exerciceContent.js';
 
-
 let questions = questionsRandom(Q);
 let answers = answersRandom(A);
 
@@ -59,9 +58,7 @@ export function putQuestionsInDescription() {
         let questionDiv = document.getElementById('questionsContainer');
         let content = document.createElement('p');
 
-
         content.innerHTML = question.id + " - " + question.content;
-
         questionDiv.appendChild(content);
     })
 }
@@ -71,7 +68,6 @@ export function putAnswersInDescription() {
     answers.forEach(answer => {
         let answerDiv = document.getElementById('answersContainer');
         let content = document.createElement('p');
-
 
         content.innerHTML = answer.answerTiket + " - " + answer.content;
 

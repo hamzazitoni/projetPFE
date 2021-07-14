@@ -8,33 +8,34 @@
 @endsection
 
 @section('content')
-    <div class="container">
+    <div class="description" id="descriptionBigBox">
+        <div class="exercice-title">
+        <div class="row">
+            <div class="col h-auto d-inline-block">
+            <h2>Description de la partie:</h2>
+            </div>
+        </div>
+        </div>
+        <div class="exercice-description">
+            <p class='descriptionContent'>
+                <i class="stop fas fa-exclamation-triangle mr-2"></i> A la fin de cette partie vous serez à mésure de comprendre que
+                les personnes créatives croient en leur créativité, les persones qui resolvent les problèmes savent, se motivent et se disent
+                qu'ils lepeuvent et que chaque resolution d'un problème est une compétence de plus. <br>
+                Pour découvrir et fair connaissance des 9 verrous , nous vous proposons d'un coté des phrases numérotés [1,2..] et de l'autre'
+                les compléments de ces phrases [A,B,..] et une bonne combinaisson vous fournit un des verroux mentaux. <br>
+                <button class="mt-2 mb-2 showPartieBtn" id="showPartieBtn">Commencer la partie</button> : <span>4 tentatives autorisées pour cette partie.</span>
+            </p>
+        </div>
+    </div>
+    <div class="container" id ='testContent'>
         <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-10">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h4 class="descriptionHeader pl-1"><u>Description de la partie :</u></h4>
-                    </div>
-                    <div class="col-md-12 descriptionBigBox" id ="descriptionBigBox">
-                        <p class='descriptionContent'>
-                            <i class="stop fas fa-exclamation-triangle mr-2"></i> A la fin de cette partie vous serez à mésure de comprendre que
-                            les personnes créatives croient en leur créativité, les persones qui resolvent les problèmes savent, se motivent et se disent
-                            qu'ils lepeuvent et que chaque resolution d'un problème est une compétence de plus. <br>
-                            Pour découvrir et fair connaissance des 9 verrous , nous vous proposons d'un coté des phrases numérotés [1,2..] et de l'autre'
-                            les compléments de ces phrases [A,B,..] et une bonne combinaisson vous fournit un des verroux mentaux. <br>
-                            <button class="ml-5 mt-2 mb-2 showPartieBtn" id="showPartieBtn">Afficher la partie</button> : <span>4 tentatives autorisées pour cette partie.</span>
-                        </p>
-                    </div>
-
-                </div>
                 <div class="row descritionBox mt-3" id = "descritionBox">
-                    <div class="col-12">
-                        <p>Lisez les phrases à gauche et faites corrspondre à celles de droite pour obtenir les verroux mentaux.</p>
+                    <div class="col-12 exercice-description mb-3">
+                        <p>Lisez les phrases à gauche et faites corrspondre à celles de droite pour obtenir les 9 verroux mentaux.</p>
                     </div>
-
                     <div class="col-6 questionsContainer" id = 'questionsContainer'>
-
                     </div>
                     <div class="col-6" id = "answersContainer">
                     </div>

@@ -51,7 +51,7 @@ Route::post('coach/checkCoachConnexion',[CoachController::class,'checkCoachConne
 Route::get('coach/coachDashBoard',[CoachController::class,'coachDashBoard'])->name('coachDashBoard')->middleware('isCoach');
 Route::get('coach/logout',[CoachController::class,'coachLogout'])->name('coachLogout')->middleware('isCoach');
 
-//section2 routes
+//---------------------section2 routes--------------------------
 Route::get('home/section/{id}/cours/s2_exercice1',[Section2Controller::class,'exercice1'])->name('exercice1')->middleware('isNotLogged');
 Route::get('home/section/{id}/cours/s2_exercice2',[Section2Controller::class,'exercice2'])->name('exercice2')->middleware('isNotLogged');
 Route::get('home/section/{id}/cours/s2_exercice3',[Section2Controller::class,'exercice3'])->name('exercice3')->middleware('isNotLogged');
@@ -74,3 +74,6 @@ Route::get('score/add',[ETudiantController::class,'addSectionScore']);
 
 //----------------------gestion vie route--------------
 Route::get('vie/get',[ETudiantController::class,'etudiantVieInfo']);
+
+/*-------------------gestion etoile -----------------------------------*/
+Route::get('stars/add',[ETudiantController::class,'addStars']);

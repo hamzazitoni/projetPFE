@@ -1,4 +1,5 @@
-import { verificationVie } from '../verificationVie.js';
+import { verificationVie, finalPopup } from '../verificationVie.js';
+import { questions as q, questionsRandom, getQuestionById, answersCount } from './verrous.js';
 
 export function challenge1() {
     $('#challenge1').hide();
@@ -12,12 +13,12 @@ export function challenge1() {
                         document.getElementById('progression').style.width = data.vie + "%";
                     })
                 $('.mauvaiseReponse').show();
-                setTimeout(() => {
-                    verificationVie();
-                }, 3000)
+                verificationVie();
                 setTimeout(() => {
                     $('.mauvaiseReponse').hide();
                 }, 2000)
+            } else {
+                challenge2();
             }
         })
         btn.addEventListener('mouseover', () => {
@@ -36,6 +37,56 @@ export function challenge1() {
     })
 }
 
+let score = 0;
+let goodAnswersCount = 0;
+export function challenge2() {
+    $('#challenge1').hide();
+    verificationVie();
+    let testBoxe = document.getElementById('testBoxe');
+    let verrous = questionsRandom(q);
+    goodAnswersCount = answersCount(verrous);
+    for (let i = 0; i < verrous.length; i++) {
+        let question = verrous[i];
+        let div = document.createElement('div');
+        let btn = document.createElement('button');
+
+        div.classList.add('col-6');
+        div.classList.add('mb-3');
+
+        btn.classList.add('verrousBTN');
+        btn.innerHTML = question.content;
+        btn.setAttribute('id', question.id);
+
+        btn.addEventListener('click', () => {
+            let question = getQuestionById(+btn.getAttribute('id'));
+            if (question.status) {
+                ++score;
+                btn.classList.add('succesBTN');
+                showFinalTestPopUp();
+            } else {
+                btn.classList.add('errorBTN');
+                $('#tentiveMessage').show();
+                $.get('http://127.0.0.1:8000/vie/get', { minus: 8 },
+                    (data) => {
+                        document.getElementById('progression').style.width = data.vie + "%";
+                    })
+                setTimeout(() => {
+                    btn.classList.remove('errorBTN');
+                    $('#tentiveMessage').hide();
+                }, 2000)
+                verificationVie();
+            }
+        });
+        div.appendChild(btn);
+        testBoxe.appendChild(div);
+    }
+    $('#challenge2').show();
+}
+
+export function showFinalTestPopUp() {
+    if (score == goodAnswersCount) finalPopup();
+}
+
 $(function() {
     $.get('http://127.0.0.1:8000/score/add', { sectionID: 2 },
         (data) => {
@@ -45,9 +96,17 @@ $(function() {
         (data) => {
             document.getElementById('progression').style.width = data.vie + "%";
         })
+    document.getElementById('nextSection').addEventListener('click', () => {
+        $.get('http://127.0.0.1:8000/stars/add', { sectionID: 2, star: 1 });
+    })
+
     $('#statistiqueContent').hide();
     $('.mauvaiseReponse').hide();
     $('.vie').hide();
-    //verificationVie();
+    $('#challenge2').hide();
+    $('#final').hide();
+    $('#tentiveMessage').hide();
+    verificationVie();
     challenge1();
+
 })
