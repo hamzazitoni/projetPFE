@@ -23,7 +23,6 @@ $(document).ready(function() {
           if ($(this).attr('id')=="3")
            {
               incrimentScores(5);
-              updateAll(5);
               $('#exo1').slideUp();
               $( "#exo2").css({
                   "transform":"translateY(-12%)",
@@ -78,10 +77,16 @@ $(document).ready(function() {
 
       }
 // --------------thes functions ------------------------//
-    function incrimentScores(score) {
+    function  incrimentScores(score) {
         var ScoreSection=+$('.score1').text();
         ScoreSection+=score;
        $('.score1').text(ScoreSection);
+       $.get('http://127.0.0.1:8000/score/add',{ sectionID:1,updateScoreSection:ScoreSection});
+            console.log('on peut pas augemente la vie elle est deja a 100% donc on augmente le score ');
+           $.get('http://127.0.0.1:8000/vie/get',{add:5},
+           (data) => {
+               document.getElementById('progressBar').style.width = data.vie + "%";}
+     
     }
     function decrementScores(nbr) {
         var ScoreSection=+$('.score1').text();
@@ -131,7 +136,7 @@ $(document).ready(function() {
             if(TrueAns)
             {
                 incrimentScores(5);
-                updateAll(5);
+
                 nbQ+=1;
                 console.log('le nombre de question',nbQ);
             }
