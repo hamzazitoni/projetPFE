@@ -41,11 +41,6 @@ Route::get('/admin/addStudentToCaoch',[AdminController::class,'giveACoachToStude
 Route::get('/admin/checkStudentToCoach',[AdminController::class,'checkStudentToCoach']);
 
 
-
-
-
-
-
 //coach routing pages
 Route::get('coach/coachConnexion',[CoachController::class,'coachConnexion'])->name('coachConnexion');
 Route::post('coach/checkCoachConnexion',[CoachController::class,'checkCoachConnexion'])->name('checkCoachConnexion');
