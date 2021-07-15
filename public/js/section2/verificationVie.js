@@ -4,12 +4,12 @@ export function verificationVie() {
         (data) => {
             vie = data.vie;
         }).then(() => {
-        /*if (vie == 0) {
+        if (vie == 0) {
             $('.description').hide();
             $('#challenge1').hide();
             $('#challenge2').hide();
             $('.vie').show();
-        }*/
+        }
     })
 }
 

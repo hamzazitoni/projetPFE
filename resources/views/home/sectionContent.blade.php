@@ -35,33 +35,33 @@
     </div>
     </header>
     <div class="container">
-        <div class="card mb-3" style="max-width: 1000px;">
+        <div class="card mb-3" style="max: 100%;">
             <div class="row g-0 ">
-              <div class="col-md-4">
+              <div class="col-4">
                 <img src="{{ asset('images/section_image.svg')}}" class="img-fluid rounded-start" alt="...">
               </div>
-              <div class="col-md-8 ">
+              <div class="col-8 ">
                 <div class="card-body">
                   <h5 class="card-title badge rounded-pill bg-light text-dark even-larger-badge ">@yield('titleSection')</h5>
                     <div class="row">
                         <!-- DEMO 5 -->
-                        <div class="py-5">
+                        <div class="py-1">
                             <div class="row">
                             <!-- DEMO 5 Item-->
-                            <div class="col-lg-6 mb-3 mb-lg-0">
+                            <div class="col-6 mb-3 mb-lg-0">
                                 <div class="hover hover-5 text-white rounded"><img src="https://res.cloudinary.com/mhmd/image/upload/v1570786269/hoverSet-10_ccl30n.jpg" alt="">
                                 <div class="hover-overlay"></div>
                                 <div class="hover-5-content">
-                                    <h3 class="hover-5-title text-uppercase font-weight-light mb-0"> <strong class="font-weight-bold text-white">Commencer à apprendre </strong></h3>
+                                    <h3  class="hover-5-title text-uppercase font-weight-light mb-0"> <strong class="font-weight-bold text-white">Notion de Bases </strong></h3>
                                 </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-6">
                                 <!-- DEMO 5 Item-->
                                 <div class="hover hover-5 text-white rounded"><img src="https://res.cloudinary.com/mhmd/image/upload/v1570786267/hoverSet-9_tmoukz.jpg" alt="">
                                 <div class="hover-overlay"></div>
                                 <div class="hover-5-content">
-                                    <h3 class="hover-5-title text-uppercase font-weight-light mb-0"> <strong class="font-weight-bold text-white">Commancer le chalenge </strong></h3>
+                                    <h3 class="hover-5-title text-uppercase font-weight-light mb-0"> <strong class="font-weight-bold text-white">Challenge </strong></h3>
                                 </div>
                                 </div>
                             </div>

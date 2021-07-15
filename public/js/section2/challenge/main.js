@@ -1,6 +1,10 @@
 import { verificationVie, finalPopup } from '../verificationVie.js';
 import { questions as q, questionsRandom, getQuestionById, answersCount } from './verrous.js';
 
+let score = 0;
+let tentative = 0;
+let goodAnswersCount = 0;
+
 export function challenge1() {
     $('#challenge1').hide();
     let btns = document.querySelectorAll('.boutton');
@@ -8,17 +12,21 @@ export function challenge1() {
         let btn = btns[i];
         btn.addEventListener('click', () => {
             if (+btn.getAttribute('id') != 9) {
+                ++tentative
+                console.log(tentative)
                 $.get('http://127.0.0.1:8000/vie/get', { minus: 8 },
                     (data) => {
                         document.getElementById('progression').style.width = data.vie + "%";
                     })
-                $('.mauvaiseReponse').show();
                 verificationVie();
+                $('.mauvaiseReponse').show();
                 setTimeout(() => {
                     $('.mauvaiseReponse').hide();
                 }, 2000)
             } else {
-                challenge2();
+                setTimeout(function() {
+                    challenge2();
+                }, 3000)
             }
         })
         btn.addEventListener('mouseover', () => {
@@ -37,8 +45,7 @@ export function challenge1() {
     })
 }
 
-let score = 0;
-let goodAnswersCount = 0;
+
 export function challenge2() {
     $('#challenge1').hide();
     verificationVie();
@@ -64,6 +71,8 @@ export function challenge2() {
                 btn.classList.add('succesBTN');
                 showFinalTestPopUp();
             } else {
+                ++tentative;
+                console.log(tentative)
                 btn.classList.add('errorBTN');
                 $('#tentiveMessage').show();
                 $.get('http://127.0.0.1:8000/vie/get', { minus: 8 },
