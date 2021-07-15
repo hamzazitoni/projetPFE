@@ -102,11 +102,11 @@
                     </div>
                 </div>
 
-                <div class="page">
-                    <div class="title">Date de naissance:</div>
+                <div class="page"> 
+                    <div class="title" >Date de naissance:</div>
                     <div class="field">
                     <div class="label">Date</div>
-                    <input type="text" id="date" value="{{ old('date')}}" name="date" placeholder="format : jj/mm/aa">
+                    <input type="date" id="date" value="{{ old('date')}}" name="date" placeholder="date de naissance" >
                     </div>
                     <div class="field">
                     <div class="label">Genre</div>
