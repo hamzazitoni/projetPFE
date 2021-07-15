@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="{{asset('css/admin/adminConnexion.css')}}" />
     <link rel="stylesheet" href="{{asset('css/admin/affection.css')}}" />
     <link rel="stylesheet" href="{{asset('css/coach/coach.css')}}" />
-    
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="{{asset('/js/section1/jquery-3.6.0.min.js')}}"></script>
   </head>

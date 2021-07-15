@@ -91,21 +91,36 @@ class AdminController extends Controller
         }
     }
 
-    public function deleteACoach(Request $request,$coach_id){
-        DB::table('etudiants')
-        ->where('coach_id', $coach_id)
-        ->update(['coach_id' => 0]);
+    public function deleteACoach(){
+        if(isset($_GET['coach_id'])){
+            DB::table('etudiants')
+            ->where('coach_id', $coach_id)
+            ->update(['coach_id' => 0]);
 
-        $coach = Coach::where('id',$coach_id)->first();
+            $coach = Coach::where('id',$coach_id)->first();
 
-        DB::table('coaches')->where('id', $coach_id)->delete();
+            DB::table('coaches')->where('id', $coach_id)->delete();
 
-        $request->session()->flash('deleteSucces',"Le coach ".$coach->name." a été supprimé avec succès.");
-        return redirect(route('adminDashBoard'));
+            return response()->json([
+                'message' => "Le coach ".$coach->name." a été supprimé avec succès .",
+            ]);
+        }
     }
+
+    public function coachList(){
+        return view('admin.coachListe',[
+            'coachs' => $this->getAllCoachs(),
+        ]);
+    }
+
 
     //------------------geting data------------------
     public function getAllCoachs(){
         return Coach::all();
+    }
+
+    public static function getAllStudentsCountForCoach($id){
+        return DB::table('etudiants')
+            ->where('coach_id', $id)->count();
     }
 }

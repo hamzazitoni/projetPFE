@@ -39,13 +39,9 @@ Route::get('/admin/logout',[AdminController::class,'logout']);
 Route::get('/admin/addACoach',[AdminController::class,'addACoach']);
 Route::get('/admin/addStudentToCaoch',[AdminController::class,'giveACoachToStudent']);
 Route::get('/admin/checkStudentToCoach',[AdminController::class,'checkStudentToCoach']);
+Route::get('/admin/coachList',[AdminController::class,'coachList']);
 Route::get('/admin',function(){ return view('admin/admin'); });
 
-//coach routing pages
-Route::get('coach/coachConnexion',[CoachController::class,'coachConnexion'])->name('coachConnexion');
-Route::post('coach/checkCoachConnexion',[CoachController::class,'checkCoachConnexion'])->name('checkCoachConnexion');
-Route::get('coach/coachDashBoard',[CoachController::class,'coachDashBoard'])->name('coachDashBoard')->middleware('isCoach');
-Route::get('coach/logout',[CoachController::class,'coachLogout'])->name('coachLogout')->middleware('isCoach');
 
 //section1 routes
 Route::get('/home/section/1/apprendre',function(){ return view('section1/exercice'); })->name('apprendre')->middleware('isNotLogged');

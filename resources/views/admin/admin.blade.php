@@ -6,6 +6,7 @@
 <div class="container allContent ">
   <div class="listCoach">
     <p>La liste des Coachs</p>
+    <div class="coachList"></div>
   </div>
   <div class="btns">
       <button class="btn btnAdd">Ajouter Un Coach</button>
@@ -24,8 +25,8 @@
 </div>
 <div class="allPopup">
     <div class="affection">
-   
-           
+
+
     </div>
 
     <div class="addCoach">
@@ -33,7 +34,7 @@
                         <p class="message"></p>
                         <label for="coachName">Le nom du coach</label>
                         <input type="text" name="coachName" class="form-control form-control-sm" id="coachName" placeholder="Le nom complet du coach" required>
-                     
+
                     </div>
                     <div class="form-group">
                         <label for="matricule">Le matricule du coach</label>
