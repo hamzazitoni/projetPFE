@@ -9,6 +9,7 @@
         <script src="https://kit.fontawesome.com/887c56acc8.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link rel="stylesheet" href="{{asset('css/index.css')}}" />
+        
     </head>
     <body>
         <div class="container-fluid">
@@ -21,16 +22,30 @@
 
                 </div>
                 <div class="col-md-4 col-xs-4">
-                    <a href="{{ route('login')}}"><button class="btn ">Login</button></a>
-                   <a href="{{ route('signin')}}"><button class="btn">Sign in</button></a>
+                    <a href="{{ route('login')}}"><button class="btn ">Connexion</button></a>
+                   <a href="{{ route('signin')}}"><button class="btn">Inscription</button></a>
                 </div>
             </div>
             <div class="container">
-            <h1>Introduction</h1>
-            <p>This desdiwuwhcbb</p>
-            <h1>Objectif</h1>
-            <p>This desdiwuwhcbb</p>
-        </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <br><br>
+                        <div class="ratio ratio-16x9">
+                            <iframe src="/videos/La résolution de problème .mp4"allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="col-md-6" >
+                        <h1>Objectif</h1>
+                       <span>À la fin de cette séance.Les étudiants seront en mesure de:</span><br>
+                       <span>Identifier les étapes clés d'une prise de décision rationnelle.</span><br>
+                       <span>Comprendre les contraintes de processus rationnel de prise de décision.</span><br>
+                       <span>Reconnaître certains bais dans la prise de décision.</span><br>
+                       <span>Identifiez certains des verrous mentaux qui inhibent la créativité. </span><br>
+        
+                    </div>
+
+
+                </div>
         </div>
     </body>
 </html>

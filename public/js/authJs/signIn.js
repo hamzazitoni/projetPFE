@@ -111,21 +111,22 @@ $(function() {
 
     $('.next-2').on('click', function(e) {
         e.preventDefault();
-        var error = 0;
+        // var error = 0;
         var date = $('#date').val();
+        console.log(date)
         if (!dateValidation(date)) {
             $('#date').css("box-shadow", "0px 0px 5px red");
-            errro += 1;
+            // errro += 1;
         } else {
             $('#date').css("box-shadow", "0px 0px 5px green");
         }
-        if (error == 0) {
-            slidePage.style.marginLeft = "-75%";
-            bullet[current - 1].classList.add("active");
-            progressCheck[current - 1].classList.add("active");
-            progressText[current - 1].classList.add("active");
-            current += 1;
-        }
+        // if (error == 0) {
+        //     slidePage.style.marginLeft = "-75%";
+        //     bullet[current - 1].classList.add("active");
+        //     progressCheck[current - 1].classList.add("active");
+        //     progressText[current - 1].classList.add("active");
+        //     current += 1;
+        // }
     })
 
     $('.prev-1').on('click', function(e) {

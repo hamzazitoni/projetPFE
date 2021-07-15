@@ -14,7 +14,7 @@ body {
 
 .btn {
     width: 100px;
-    font-size: 20px;
+    font-size: auto;
     color: black;
     margin-bottom: 2px;
 }
