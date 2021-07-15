@@ -1,0 +1,30 @@
+.affection,.addCoach{
+    position:relative;
+    width:50%;
+    padding:1%;
+    box-shadow: 0px 0px 10px black;
+    border-radius:10px;
+    background-color: white;
+    top:0;
+    font-size:25px !important;
+    font-family: Cambria, Cochin, Georgia, Times,  serif;
+}
+.affection{
+     left:25%; 
+     z-index: 5;
+     /* height: 50vh; */
+}
+.addCoach{
+    position:absolute;
+    left:25%; 
+    top:100%;
+}
+.btnStAffect,.btnAnnuler,.btnAddCoach,.btnAnnuleAddCoach{
+    position: relative;
+    background-color:#0d1b2a;
+    color:white;
+    margin:2%;
+    font-size:20px ;
+    /* height:10vh; */
+    font-family: Cambria, Cochin, Georgia, Times,  serif;
+}

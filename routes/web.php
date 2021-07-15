@@ -32,14 +32,14 @@ Route::get('/home',[EtudiantController::class,'home'])->name('home')->middleware
 Route::get('/home/section/{id}',[EtudiantController::class,'section'])->name('sections')->middleware('isNotLogged');
 
 
-//Administration Pages
+// //Administration Pages
 Route::get('/admin/connexion',[AdminController::class,'adminConnxion']);
 Route::get('/admin/isAdmin',[AdminController::class,'isloggedAsAdmin']);
 Route::get('/admin/logout',[AdminController::class,'logout']);
 Route::get('/admin/addACoach',[AdminController::class,'addACoach']);
 Route::get('/admin/addStudentToCaoch',[AdminController::class,'giveACoachToStudent']);
 Route::get('/admin/checkStudentToCoach',[AdminController::class,'checkStudentToCoach']);
-
+Route::get('/admin',function(){ return view('admin/admin'); });
 
 //coach routing pages
 Route::get('coach/coachConnexion',[CoachController::class,'coachConnexion'])->name('coachConnexion');
