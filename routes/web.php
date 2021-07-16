@@ -24,6 +24,8 @@ Route::get('auth/login',[EtudiantController::class,'login'])->name('login')->mid
 Route::get('auth/signin',[EtudiantController::class,'signin'])->name('signin')->middleware('isLogged');
 Route::post('auth/register',[EtudiantController::class,'register'])->name('register');
 Route::post('auth/check',[EtudiantController::class,'check'])->name('check');
+Route::post('auth/checkResetPassord',[EtudiantController::class,'checkResetPassord'])->name('checkResetPassord');
+Route::get('auth/resetPassword',[EtudiantController::class,'resetPassword'])->name('resetPassword')->middleware('isLogged');
 Route::get('/auth/logout',[EtudiantController::class,'logout'])->name('logout')->middleware('isNotLogged');
 
 //Pages routes

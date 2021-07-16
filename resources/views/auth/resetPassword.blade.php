@@ -8,8 +8,16 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
     integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
     crossorigin="anonymous">
-
-
+    @if (session('success'))
+        <div class=" alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+    @if (session('connectionError'))
+        <div class="error alert-danger">
+            {{ session('connectionError') }}
+        </div>
+    @endif
     <div id="login">
         <img class="wave" src="{{ asset('/images/authImg/wave.png') }}">
         <div class="container">
@@ -17,18 +25,10 @@
                 <img src="{{ asset('/images/authImg/bg.png') }}">
             </div>
             <div class="login-content">
-                <form action=" {{ route('check')}}" method="POST">
+                <form action=" {{ route('checkResetPassord')}}" method="POST">
                     @csrf
                     <img src="{{ asset('/images/authImg/avatarLogin.png') }}">
-                    <h3 class="title">Connexion</h3>
-                    @if (session('success'))
-                        <span class="succesmessage">
-                            {{ session('success') }}
-                        </span>
-                        @php
-                            session()->forget('success');
-                        @endphp
-                    @endif
+                    <h3 class="title titre">Nouveau mot de passe</h3>
                     <div class="input-div one">
                         <div class="i">
                                 <i class="fas fa-user"></i>
@@ -46,12 +46,12 @@
                             Donnez une adresse e-mail valide.
                         </span>
                     @enderror
-                    @if (session()->has('connectionError'))
+                    @if (session()->has('confirmError'))
                         <span class="error">
                             Aucun compte trouvé pour cette adresse e-mail.
                         </span>
                         @php
-                            session()->forget('connectionError');
+                            session()->forget('confirmError');
                         @endphp
                     @endif
                     <div class="input-div pass">
@@ -59,29 +59,46 @@
                             <i class="fas fa-lock"></i>
                         </div>
                         <div class="div">
-                            @if(old('password'))
-                            @else
-                                <h5>Mot de Passe</h5>
-                            @endif
-                            <input type="password" class="input" value="{{old('password')}}" name="password" placeholder="">
+                                @if(old('passwordnew'))
+                                @else
+                                    <h5>Mot de Passe</h5>
+                                @endif
+                                <input type="password" class="input" value="{{old('passwordnew')}}" name="passwordnew" placeholder="">
                         </div>
                     </div>
-                    @error('password')
+                    @error('passwordnew')
                         <span class="error">
                             Le mot de passe doit contenir aumoins 6 caractères.
                         </span>
                     @enderror
-                    @if (session('connectionPasswordError'))
+                    <div class="input-div pass">
+                        <div class="i">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div class="div">
+                            @if(old('passwordcomfirm'))
+                            @else
+                                <h5>Confirmation</h5>
+                            @endif
+                            <input type="password" class="input" value="{{old('passwordcomfirm')}}" name="passwordcomfirm" placeholder="">
+                        </div>
+                    </div>
+                    @error('passwordcomfirm')
                         <span class="error">
-                            {{ session('connectionPasswordError') }}
+                            Le mot de passe doit contenir aumoins 6 caractères.
+                        </span>
+                    @enderror
+                    @if (session()->has('confirmPasswordError'))
+                        <span class="error">
+                            Le mot de passe de confirmation est différent de l'initial.
                         </span>
                         @php
-                            session()->forget('connectionPasswordError');
+                            session()->forget('confirmPasswordError');
                         @endphp
                     @endif
-                    <a href="{{ route('resetPassword')}}">Mot de Passe Oublié?</a>
+                    <a href="{{ route('login')}}">Se connecter</a>
                     <a href="{{ route('signin')}}">Pas de compte ?</a>
-                    <input type="submit" class="btn" value="Se connecter !">
+                    <input type="submit" class="btn" value="Changer">
                 </form>
             </div>
         </div>

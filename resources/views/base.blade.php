@@ -37,9 +37,9 @@
                     </div>
                 </div>
                 <h2 class="text-center useName">{{ $etudiant_name }}</h2>
-                <p class="moyenne">Score moyenne: 09238</p>
+                <p class="moyenne">Score moyen: {{App\Http\Controllers\EtudiantController::getAvgGlobalScore()}}</p>
                 <h2 class="coach">Coach : {{ $coach_name }}</h2>
-                <div class=logout><a href="#">Se Deconnecter</a></div>
+                <div class=logout><a href="{{ route('logout') }}">Se Deconnecter</a></div>
             </div>
         </div>
         <div class="main-page">
@@ -56,7 +56,7 @@
                             <img src="{{ asset('images/section1/iconM3.svg')}}" width="40%">
                         </a>
                         <div class="score">
-                            score : {{ $totalScore }}
+                            score : {{ App\Http\Controllers\EtudiantController::getEtudiantTotalScore()}}
                         </div>
                     </div>
                     <div class="header-right-part">

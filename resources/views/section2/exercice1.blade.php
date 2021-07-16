@@ -8,27 +8,6 @@
 @endsection
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-1"></div>
-            <div class="col-10">
-                <div class="row">
-                    <div class="col h-auto d-inline-block">
-                    <h2>Description de la partie:</h2>
-                    </div>
-                </div>
-                </div>
-                <div class="exercice-description">
-                    <p class='descriptionContent'>
-                        <i class="stop fas fa-exclamation-triangle mr-2"></i> Dans cette partie , vous allez choisir les adjectifs qui vous décrivent le mieux selon qu'ils sont
-                        avantageux pour vous et pour votre entourage ou pas.  <br>
-                        <button class="mt-2 mb-2 showPartieBtn" id="showPartieBtn">Afficher la partie</button> : <span>10 choix au minimum.</span>
-                    </p>
-              </div>
-            </div>
-            <div class="col-1"></div>
-        </div>
-    </div>
     <div class="description" id="descriptionBigBox">
         <div class="exercice-title">
         <div class="row">

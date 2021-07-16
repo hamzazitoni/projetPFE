@@ -15,21 +15,7 @@
     </script>
 
     <div class="container">
-        @if (session('error'))
-            <div class="error">
-                {{ session('error') }}
-            </div>
-        @endif
-        @if (session()->has('confirmError'))
-            <div class="error">
-                {{ session('confirmError') }}
-            </div>
-        @endif
-        @error('email')
-            <div class="error">
-                Cette adresse email est déjà utilisée pour un autre compte.
-            </div>
-        @enderror
+
     </div>
 
     <div id="sign">
@@ -38,6 +24,22 @@
         </div>
         <div class="container">
           <header>Inscription</header>
+            @if (session('error'))
+                <span class="error">
+                    {{ session('error') }}
+                </span>
+                @php
+                    session()->forget('error');
+                @endphp
+            @endif
+            @if (session()->has('confirmError'))
+                <span class="error">
+                    {{ session('confirmError') }}
+                </span>
+                @php
+                    session()->forget('confirmError');
+                @endphp
+            @endif
           <div class="progress-bar">
             <div class="step">
               <p>Nom</p>
@@ -102,11 +104,11 @@
                     </div>
                 </div>
 
-                <div class="page"> 
+                <div class="page">
                     <div class="title" >Date de naissance:</div>
                     <div class="field">
                     <div class="label">Date</div>
-                    <input type="date" id="date" value="{{ old('date')}}" name="date" placeholder="date de naissance" >
+                    <input type="text" id="date" value="{{ old('date')}}" name="date" placeholder="date de naissance" >
                     </div>
                     <div class="field">
                     <div class="label">Genre</div>

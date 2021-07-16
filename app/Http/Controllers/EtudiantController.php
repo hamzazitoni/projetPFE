@@ -19,6 +19,34 @@ class EtudiantController extends Controller
         return view('auth.signin');
     }
 
+    public function resetPassword(){
+        return view('auth.resetPassword');
+    }
+
+    public function checkResetPassord(Request $request){
+
+        $request->validate(
+            [
+                'passwordnew' => 'required|min:6',
+                'email' => 'required|email',
+                'passwordcomfirm' => 'required|min:6',
+            ]
+        );
+        $etudiant = Etudiant::where('email', '=', $request->input('email'))->first();
+        if(empty($etudiant)){
+            $request->session()->put('confirmError',"ok");
+            return back()->withInput();
+        }
+        if($request->input('passwordnew') != $request->input('passwordcomfirm')){
+            $request->session()->flash('confirmPasswordError', "ok");
+            return back()->withInput();
+        }
+        $etudiant->password = sha1($request->input('passwordnew'));
+
+        $etudiant->save();
+        return redirect(route('login'));
+    }
+
     public function register(Request $request){
         $request->validate(
             [
@@ -69,12 +97,12 @@ class EtudiantController extends Controller
 
         $etudiant = Etudiant::where('email', '=', $request->input('email'))->first();
 
-        if($etudiant){
+        if(!empty($etudiant)){
             if($etudiant->password == sha1($request->input('password'))){
                 $request->session()->put('etudiant_id',$etudiant->id);
                 return redirect(route('home'));
             }else{
-                $request->session()->flash('connectionError','Mot de passe invalide.');
+                $request->session()->flash('connectionPasswordError','Mot de passe invalide.');
                 return back()->withInput();
             }
         }else{
@@ -235,7 +263,7 @@ class EtudiantController extends Controller
         return $coach_name;
     }
 
-    public function getEtudiantTotalScore(){
+    public static function getEtudiantTotalScore(){
         $score = 0;
         $moduleInformations = DB::table('modules')->where('etudiant_id', session('etudiant_id'))->get();
 
@@ -251,19 +279,40 @@ class EtudiantController extends Controller
     }
 
     public static function getBestScoreOfAnSection($id){
-        $scoreMax = 0;
-        $moduleInfo = DB::table('modules')->where('section',$id);
+        $moduleInfo = Module::where('section',$id)->get();
         if(!empty($moduleInfo)){
-            $scoreMax = $moduleInfo->max('etudiant_score');
-        }
-        return $scoreMax;
-    }
-
-    public static function getAverageOfAnSection($id){
-        $moyenneInfo = DB::table('modules')->where('section',$id);
-        if($moyenneInfo){
-            return $moyenneInfo->avg('etudiant_score');
+            return $moduleInfo->max('etudiant_score');
         }
         return 0;
     }
+
+    public static function getAverageOfAnSection($id){
+        $score = 0;
+        $moduleInformations = DB::table('modules')->where('section',$id)->get();
+        if($moduleInformations->count() == 0) return 0;
+        foreach($moduleInformations as $info){
+            $score += $info->etudiant_score;
+        }
+        return number_format($score / $moduleInformations->count(),2);
+    }
+
+    public static function getAvgGlobalScore(){
+        $score = 0;
+        $moduleInformations = DB::table('modules')->get();
+        if($moduleInformations->count() == 0) return 0;
+        foreach($moduleInformations as $info){
+            $score += $info->etudiant_score;
+        }
+        return number_format($score / $moduleInformations->count(),2);
+    }
+
+    public static function stateOfSection($id){
+        $state = "Non validé";
+        $section = Section::where('id',$id)->first();
+        if(!empty($section)){
+            if($section->section_status == 1) $state = "Validé";
+        }
+        return $state;
+    }
+
 }
