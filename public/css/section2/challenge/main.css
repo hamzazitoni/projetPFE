@@ -1,0 +1,141 @@
+.questions {
+    min-height: 30px;
+    border: 2px dashed black;
+    padding: 5px;
+    width: 100%;
+}
+
+.QContent {
+    background-color: rgb(9, 134, 206);
+    border-radius: 100%;
+    color: white;
+    width: 100%;
+    height: 100%;
+    padding-top: 25px;
+    cursor: move;
+}
+
+.RContent {
+    width: 100%;
+    height: 100%;
+    color: white;
+    background-color: rgb(64, 173, 216);
+    padding-top: 22px;
+    font-weight: bold;
+}
+
+.okDragged {
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    border-radius: 20px;
+}
+
+.qt {
+    color: orange;
+}
+
+.an {
+    color: green;
+    margin-left: 3px;
+}
+
+.nokDragged {
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+.statistiques {
+    border-left: 5px solid rgb(63, 176, 211);
+    border-bottom: 4px solid rgb(63, 176, 211);
+    border-bottom-left-radius: 10px;
+}
+
+.score {
+    font-size: 12px;
+}
+
+.statistiquesContainer {
+    background-color: rgb(212, 208, 208);
+    border-radius: 4px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.description {
+    width: 75%;
+    margin: 60px auto;
+}
+
+.exercice-title h2 {
+    font-size: 25px;
+    position: relative;
+}
+
+.exercice-title h2::before {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: -10px;
+    width: 30px;
+    background-color: #30BCED;
+    height: 6px;
+    border-radius: 100px;
+}
+
+.exercice-description {
+    border: 1px solid #ccc;
+    padding: 5px 12px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .1);
+    border-left: 3 px solid #30BCED;
+}
+
+.exercice-description p {
+    font-size: 17px;
+    line-height: 26px;
+}
+
+.ok {
+    color: green;
+    font-size: 20px;
+}
+
+.boutton {
+    font-size: 25px;
+    width: 100%;
+    height: 80px;
+    font-weight: bold;
+    background-color: rgb(8, 141, 230);
+}
+
+.thumb {
+    color: red;
+    font-size: 23px;
+}
+
+.viepopup {
+    background-color: rgb(212, 208, 208);
+}
+
+.verrousBTN {
+    width: 100%;
+    min-height: 50px;
+}
+
+.succesBTN {
+    background-color: green;
+    color: white;
+}
+
+.errorBTN {
+    background-color: red;
+    color: white;
+}
+
+.star {
+    color: orange;
+    font-size: 50px;
+    font-weight: bold
+}

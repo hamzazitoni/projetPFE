@@ -1,0 +1,29 @@
+body {
+    background-color: rgb(245, 245, 245);
+}
+
+.container-fluid {
+    height: 550px;
+    background-image: url('../images/index-bg.jpeg');
+    background-repeat: no-repeat;
+    padding: 0%;
+    /* display:flex; */
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-left: 3%;
+}
+
+.btn {
+    width: 100px;
+    font-size: auto;
+    color: black;
+    margin-bottom: 2px;
+}
+
+button:hover {
+    background: #2fb9eb;
+    transition: all 0.5 ease;
+}
+
+.second_row {
+    margin-bottom: 10%;
+}

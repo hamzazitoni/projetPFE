@@ -113,6 +113,7 @@ $(function() {
         e.preventDefault();
         var error = 0;
         var date = $('#date').val();
+        console.log(date)
         if (!dateValidation(date)) {
             $('#date').css("box-shadow", "0px 0px 5px red");
             errro += 1;

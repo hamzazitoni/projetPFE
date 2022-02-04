@@ -23,6 +23,8 @@ class CreateEtudiantsTable extends Migration
             $table->string('sex');
             $table->string('password');
             $table->integer('coach_id')->default(0);
+            $table->integer('etudiant_vie')->default(100);
+            $table->integer('etudiant_stars')->default(0);
             $table->timestamps();
         });
     }

@@ -224,4 +224,10 @@ a:hover {
 
 .error {
     color: red;
+    font-size: 12px;
+}
+
+.succesmessage {
+    color: green;
+    font-size: 15px;
 }

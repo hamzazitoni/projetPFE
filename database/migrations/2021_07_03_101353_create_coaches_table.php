@@ -16,6 +16,7 @@ class CreateCoachesTable extends Migration
         Schema::create('coaches', function (Blueprint $table) {
             $table->BigIncrements('id');
             $table->string('name');
+            $table->string('matricule');
             $table->timestamps();
         });
     }

@@ -1,0 +1,105 @@
+.questionContentItem {
+    background-color: #2d78da8e;
+    margin: 1px;
+    border-radius: 3px;
+}
+
+.ok {
+    color: green;
+    margin-left: 4px;
+}
+
+.noOk {
+    color: #804400;
+    margin-left: 4px;
+}
+
+.reponseBoxe {
+    /*background-color: rgb(34, 137, 233);*/
+    min-height: 80px;
+    border: 2px dashed black;
+    padding: 10px;
+}
+
+.box {
+    padding: 2px;
+}
+
+#adjectifDiv {
+    min-height: 30px;
+    border: 2px dashed green;
+    padding: 10px;
+}
+
+#validationBtn {
+    /*background-color: rgb(0, 119, 255);*/
+    color: black;
+}
+
+#avantageux {
+    padding: 3px;
+}
+
+.statistiquesContainer {
+    background-color: rgb(212, 208, 208);
+    border-radius: 4px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.descriptionHeader {
+    border-left: 5px solid rgb(0, 195, 255);
+}
+
+.stop {
+    color: red;
+}
+
+.descriptionContent {
+    /*box-shadow: 0px 0px 0px 2px rgb(0, 204, 255);*/
+    padding: 5px;
+}
+
+.statistiques {
+    border-left: 5px solid rgb(63, 176, 211);
+    border-bottom: 4px solid rgb(63, 176, 211);
+    border-bottom-left-radius: 10px;
+}
+
+.score {
+    font-size: 12px;
+}
+
+.description {
+    width: 75%;
+    margin: 60px auto;
+}
+
+.exercice-title h2 {
+    font-size: 25px;
+    position: relative;
+}
+
+.exercice-title h2::before {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: -10px;
+    width: 30px;
+    background-color: #30BCED;
+    height: 6px;
+    border-radius: 100px;
+}
+
+.exercice-description {
+    border: 1px solid #ccc;
+    padding: 5px 12px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .1);
+    border-left: 3 px solid #30BCED;
+}
+
+.exercice-description p {
+    font-size: 17px;
+    line-height: 26px;
+}

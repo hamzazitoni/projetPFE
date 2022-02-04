@@ -1,0 +1,28 @@
+.loginAdmin{
+    position: relative;
+    height:auto;
+    padding:1%;
+    box-shadow: 0px 0px 10px black;
+    width:30%;
+    border-radius:10px;
+    left:36%;
+    z-index: 5;
+    top:0;
+}
+.entete{
+    font-size:30px;
+    border-bottom: 2px solid #30BCED;
+    text-align:center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+.btnLogin{
+    position: relative;
+    background-color:black;
+    color:#30BCED;
+    left:30%;
+    top:0%;
+    font-size:35px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+  }

@@ -8,16 +8,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
     integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
     crossorigin="anonymous">
-    @if (session('success'))
-        <div class=" alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
-    @if (session('connectionError'))
-        <div class="error alert-danger">
-            {{ session('connectionError') }}
-        </div>
-    @endif
+
+
     <div id="login">
         <img class="wave" src="{{ asset('/images/authImg/wave.png') }}">
         <div class="container">
@@ -28,28 +20,68 @@
                 <form action=" {{ route('check')}}" method="POST">
                     @csrf
                     <img src="{{ asset('/images/authImg/avatarLogin.png') }}">
-                    <h2 class="title">Connexion</h2>
+                    <h3 class="title">Connexion</h3>
+                    @if (session('success'))
+                        <span class="succesmessage">
+                            {{ session('success') }}
+                        </span>
+                        @php
+                            session()->forget('success');
+                        @endphp
+                    @endif
                     <div class="input-div one">
                         <div class="i">
                                 <i class="fas fa-user"></i>
                         </div>
                         <div class="div">
-                            <h5>Email</h5>
-                            <input type="text" class="input" value="" name="email" placeholder="">
+                            @if(old('email'))
+                            @else
+                                <h5>Email</h5>
+                            @endif
+                            <input type="text" class="input" value="{{old('email')}}" name="email" placeholder="">
                         </div>
                     </div>
+                    @error('email')
+                        <span class="error">
+                            Donnez une adresse e-mail valide.
+                        </span>
+                    @enderror
+                    @if (session()->has('connectionError'))
+                        <span class="error">
+                            Aucun compte trouvé pour cette adresse e-mail.
+                        </span>
+                        @php
+                            session()->forget('connectionError');
+                        @endphp
+                    @endif
                     <div class="input-div pass">
                         <div class="i">
                             <i class="fas fa-lock"></i>
                         </div>
                         <div class="div">
+                            @if(old('password'))
+                            @else
                                 <h5>Mot de Passe</h5>
-                                <input type="password" class="input" value="" name="password" placeholder="">
+                            @endif
+                            <input type="password" class="input" value="{{old('password')}}" name="password" placeholder="">
                         </div>
                     </div>
-                    <a href="#">Mot de Passe Oublié?</a>
+                    @error('password')
+                        <span class="error">
+                            Le mot de passe doit contenir aumoins 6 caractères.
+                        </span>
+                    @enderror
+                    @if (session('connectionPasswordError'))
+                        <span class="error">
+                            {{ session('connectionPasswordError') }}
+                        </span>
+                        @php
+                            session()->forget('connectionPasswordError');
+                        @endphp
+                    @endif
+                    <a href="{{ route('resetPassword')}}">Mot de Passe Oublié?</a>
                     <a href="{{ route('signin')}}">Pas de compte ?</a>
-                    <input type="submit" class="btn" value="Login">
+                    <input type="submit" class="btn" value="Se connecter !">
                 </form>
             </div>
         </div>
